@@ -1,4 +1,4 @@
 package com.programaformacao.server.repositories;
 
-public class DonationRepository {
+public interface DonationRepository {
 }
