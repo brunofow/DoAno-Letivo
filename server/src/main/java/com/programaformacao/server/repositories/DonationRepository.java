@@ -1,4 +1,7 @@
 package com.programaformacao.server.repositories;
 
-public class DonationRepository {
+import com.programaformacao.server.models.Donation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DonationRepository extends JpaRepository<Donation, Long> {
 }
