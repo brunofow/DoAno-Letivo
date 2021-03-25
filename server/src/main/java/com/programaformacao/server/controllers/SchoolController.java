@@ -8,21 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.programaformacao.server.models.Donor;
-import com.programaformacao.server.repositories.DonorRepository;
+import com.programaformacao.server.models.School;
+import com.programaformacao.server.repositories.SchoolRepository;
 
 @RestController
-@RequestMapping("/donors")
-public class DonorController {
+@RequestMapping("/schools")
+public class SchoolController {
 	@Autowired
-	private DonorRepository repository;
+	private SchoolRepository repository;
 	@GetMapping()
 	public ResponseEntity<?> index() {
 	    return ResponseEntity.ok(repository.findAll());
 	  }
 
 	  @PostMapping
-	  public ResponseEntity<?> create(@RequestBody Donor dono) {
-	    return ResponseEntity.ok(repository.save(dono));
-	  }
+	  public ResponseEntity<?> create(@RequestBody School school) {
+	    return ResponseEntity.ok(repository.save(school));
+	  
 	}
+}

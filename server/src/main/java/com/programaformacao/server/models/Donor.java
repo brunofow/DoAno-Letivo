@@ -1,31 +1,39 @@
 package com.programaformacao.server.models;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Donor implements Serializable{
+public class Donor{
 
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@NotNull
 	private String name;
+	@NotNull
 	private String CPF;
+	@NotNull
 	private String password;
+	@NotNull
 	private String email;
+	@OneToMany(mappedBy = "donor")
+	private List<Donation> donations = new ArrayList<>();
 
 	public Donor(){		
 	}
-	public Donor(Long id, String name, String cPF, String password, String email) {
+	public Donor(Long id, String name, String CPF, String password, String email) {
 		super();
 		this.id = id;
 		this.name = name;
-		CPF = cPF;
+		this.CPF = CPF;
 		this.password = password;
 		this.email = email;
 	}
@@ -81,4 +89,3 @@ public class Donor implements Serializable{
 		return true;
 	}
 	}
-
