@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Donor implements Serializable{
+public class Donor extends User {
 
 	private static final long serialVersionUID = 1L;
 	@Id
