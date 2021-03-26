@@ -1,44 +1,32 @@
 package com.programaformacao.server.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-
 @Entity
-<<<<<<< HEAD
-public class Donor extends User {
-=======
-public class Donor{
->>>>>>> b82232cc706ae3b619919ea2bfe302dcc569b9db
-
+public class School {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
 	private String name;
 	@NotNull
-	private String CPF;
+	private String Address;
 	@NotNull
-	private String password;
+	private String phone;
 	@NotNull
 	private String email;
-	@OneToMany(mappedBy = "donor")
-	private List<Donation> donations = new ArrayList<>();
-
-	public Donor(){		
+	
+	public School() {
 	}
-	public Donor(Long id, String name, String CPF, String password, String email) {
+	public School(Long id,@NotNull String name, @NotNull String address, @NotNull String phone, @NotNull String email) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.CPF = CPF;
-		this.password = password;
+		Address = address;
+		this.phone = phone;
 		this.email = email;
 	}
 	public Long getId() {
@@ -50,18 +38,17 @@ public class Donor{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String getCPF() {
-		return CPF;
+	public String getAddress() {
+		return Address;
 	}
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setAddress(String address) {
+		Address = address;
 	}
-	public String getPassword() {
-		return password;
+	public String getPhone() {
+		return phone;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getEmail() {
 		return email;
@@ -84,7 +71,7 @@ public class Donor{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Donor other = (Donor) obj;
+		School other = (School) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -92,4 +79,7 @@ public class Donor{
 			return false;
 		return true;
 	}
-	}
+	
+	
+	
+}
