@@ -2,6 +2,10 @@ package com.programaformacao.server.security;
 
 public class AccountCredentials {
 
+  private String email;
+  private String password;
+  private String accountType;
+
   public String getEmail() {
     return email;
   }
@@ -18,8 +22,11 @@ public class AccountCredentials {
     this.password = password;
   }
 
-  private String email;
-  private String password;
+  public String getAccountType() {
+    return accountType;
+  }
 
-
+  public void setAccountType(String accountType) {
+    this.accountType = accountType;
+  }
 }

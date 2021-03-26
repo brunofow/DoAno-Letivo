@@ -1,7 +1,5 @@
 package com.programaformacao.server.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,9 +20,27 @@ public class Parent {
 	@NotNull
 	@Size(min = 2, max = 50)
 	private String name;
-	
-	
-	private List<Students> students;
+
+	private String email;
+
+	private String password;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+//	private List<Students> students;
 	
 	@CPF
 	@NotBlank
@@ -46,13 +62,13 @@ public class Parent {
 		this.name = name;
 	}
 
-	public List<Students> getStudents() {
-		return students;
-	}
+//	public List<Students> getStudents() {
+//		return students;
+//	}
 
-	public void setStudents(List<Students> students) {
-		this.students = students;
-	}
+//	public void setStudents(List<Students> students) {
+//		this.students = students;
+//	}
 
 	public String getCpf() {
 		return cpf;

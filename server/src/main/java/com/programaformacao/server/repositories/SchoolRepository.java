@@ -6,4 +6,5 @@ import com.programaformacao.server.models.School;
 
 public interface SchoolRepository extends JpaRepository<School, Long> {
 
+  School findByEmail(String email);
 }
