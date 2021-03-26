@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
 @Entity
 public class Donor{
 
@@ -17,8 +19,10 @@ public class Donor{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
+	@Size(min = 2, max = 50)
 	private String name;
 	@NotNull
+	@CPF
 	private String CPF;
 	@NotNull
 	private String password;
@@ -29,14 +33,19 @@ public class Donor{
 
 	public Donor(){		
 	}
-	public Donor(Long id, String name, String CPF, String password, String email) {
+	
+	public Donor(Long id, @NotNull @Size(min = 2, max = 50) String name,
+			@NotNull @org.hibernate.validator.constraints.br.CPF String cPF, @NotNull String password,
+			@NotNull String email, List<Donation> donations) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.CPF = CPF;
+		CPF = cPF;
 		this.password = password;
 		this.email = email;
+		this.donations = donations;
 	}
+
 	public Long getId() {
 		return id;
 	}
