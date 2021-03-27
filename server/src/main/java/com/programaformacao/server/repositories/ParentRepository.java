@@ -7,4 +7,5 @@ import com.programaformacao.server.models.Parent;
 public interface ParentRepository extends JpaRepository<Parent, Long>{
 
   Parent findByEmail(String email);
+
 }

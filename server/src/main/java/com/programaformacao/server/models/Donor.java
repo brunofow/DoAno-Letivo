@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.br.CPF;
 @Entity
 public class Donor{
 
@@ -92,3 +93,4 @@ public class Donor{
     return true;
   }
 }
+
