@@ -25,6 +25,26 @@ public class Parent {
 
 	private String password;
 
+	private String rg;
+
+	private String emittingOrgan;
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getEmittingOrgan() {
+		return emittingOrgan;
+	}
+
+	public void setEmittingOrgan(String emittingOrgan) {
+		this.emittingOrgan = emittingOrgan;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -40,11 +60,6 @@ public class Parent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-//	private List<Students> students;
-	
-	@CPF
-	@NotBlank
-	private String cpf;
 
 	public Long getId() {
 		return id;
@@ -62,21 +77,5 @@ public class Parent {
 		this.name = name;
 	}
 
-//	public List<Students> getStudents() {
-//		return students;
-//	}
-
-//	public void setStudents(List<Students> students) {
-//		this.students = students;
-//	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
 
 }

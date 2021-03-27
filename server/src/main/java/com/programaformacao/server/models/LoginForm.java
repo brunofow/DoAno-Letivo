@@ -1,10 +1,20 @@
-package com.programaformacao.server.security;
+package com.programaformacao.server.models;
 
-public class AccountCredentials {
+public class LoginForm {
 
   private String email;
+
   private String password;
+
   private String accountType;
+
+  public String getAccountType() {
+    return accountType;
+  }
+
+  public void setAccountType(String accountType) {
+    this.accountType = accountType;
+  }
 
   public String getEmail() {
     return email;
@@ -20,13 +30,5 @@ public class AccountCredentials {
 
   public void setPassword(String password) {
     this.password = password;
-  }
-
-  public String getAccountType() {
-    return accountType;
-  }
-
-  public void setAccountType(String accountType) {
-    this.accountType = accountType;
   }
 }

@@ -20,7 +20,7 @@ public class Students {
 	
 	@NotNull
 	private String escola;
-	
+
 	@NotNull
 	private String serie;
 	

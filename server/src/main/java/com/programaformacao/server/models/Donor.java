@@ -19,7 +19,10 @@ public class Donor{
   @NotNull
   private String name;
   @NotNull
-  private String CPF;
+  private String rg;
+
+  @NotNull
+  private String emittingOrgan;
   @NotNull
   private String password;
   @NotNull
@@ -27,16 +30,6 @@ public class Donor{
   @OneToMany(mappedBy = "donor")
   private List<Donation> donations = new ArrayList<>();
 
-  public Donor(){
-  }
-  public Donor(Long id, String name, String CPF, String password, String email) {
-    super();
-    this.id = id;
-    this.name = name;
-    this.CPF = CPF;
-    this.password = password;
-    this.email = email;
-  }
   public Long getId() {
     return id;
   }
@@ -47,12 +40,22 @@ public class Donor{
     this.name = name;
   }
 
-  public String getCPF() {
-    return CPF;
+  public String getRg() {
+    return rg;
   }
-  public void setCPF(String cPF) {
-    CPF = cPF;
+
+  public void setRg(String rg) {
+    this.rg = rg;
   }
+
+  public String getEmittingOrgan() {
+    return emittingOrgan;
+  }
+
+  public void setEmittingOrgan(String emittingOrgan) {
+    this.emittingOrgan = emittingOrgan;
+  }
+
   public String getPassword() {
     return password;
   }
