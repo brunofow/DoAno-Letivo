@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.br.CPF;
 public class Donor{
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @NotNull
   private String name;
@@ -28,6 +28,7 @@ public class Donor{
   private String password;
   @NotNull
   private String email;
+
   @OneToMany(mappedBy = "donor")
   private List<Donation> donations = new ArrayList<>();
 

@@ -28,6 +28,14 @@ public class Donation {
     @JoinColumn(name = "donor_id")
     private Donor donor;
 
+	public Donor getDonor() {
+		return donor;
+	}
+
+	public void setDonor(Donor donor) {
+		this.donor = donor;
+	}
+
 	public Long getId() {
         return id;
     }
