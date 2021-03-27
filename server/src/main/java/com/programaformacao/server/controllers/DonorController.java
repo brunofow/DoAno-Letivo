@@ -1,7 +1,5 @@
 package com.programaformacao.server.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.programaformacao.server.controllers.exception.DataBaseException;
-import com.programaformacao.server.controllers.exception.ResourceNotFoundException;
 import com.programaformacao.server.models.Donor;
 import com.programaformacao.server.repositories.DonorRepository;
 
@@ -26,25 +22,26 @@ import com.programaformacao.server.repositories.DonorRepository;
 public class DonorController {
 	@Autowired
 	private DonorRepository repository;
+
 	
 	@GetMapping()
-	public ResponseEntity<List<Donor>> GetAll() {
+	public ResponseEntity<List<Donor>> getAll() {
 	    return ResponseEntity.ok(repository.findAll());
 	  }
 
-	  public ResponseEntity<Donor> post(@RequestBody Donor dono) {
+	  public ResponseEntity<Donor> create(@RequestBody Donor dono) {
 	    return ResponseEntity.ok(repository.save(dono));
 	  }
 	  
 	@PutMapping
-	public ResponseEntity<Donor> put (@RequestBody Donor donor){
+	public ResponseEntity<Donor> update(@RequestBody Donor donor){
 		
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(donor));
 	}
 		
 	
 	@DeleteMapping("/{id}")
-	public void delete (@PathVariable long id) {
+	public void delete(@PathVariable long id) {
 		try {
 			repository.deleteById(id);		
 		}catch(EmptyResultDataAccessException e) {
@@ -53,5 +50,5 @@ public class DonorController {
 			throw new DataBaseException(e.getMessage());
 		}
 	}
-	
+
 	}

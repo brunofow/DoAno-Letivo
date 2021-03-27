@@ -1,6 +1,7 @@
 package com.programaformacao.server.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +30,7 @@ public class SchoolController {
 	  public ResponseEntity<?> create(@RequestBody School school) {
 	    return ResponseEntity.ok(repository.save(school));
 	}
+  
 	  @PutMapping
 		public ResponseEntity<School> put (@RequestBody School school){
 			
@@ -44,4 +46,5 @@ public class SchoolController {
 		}
 
 	}
+
 
