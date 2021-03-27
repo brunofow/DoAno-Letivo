@@ -1,5 +1,7 @@
 package com.programaformacao.server.controllers;
 
+import com.programaformacao.server.controllers.exception.DataBaseException;
+import com.programaformacao.server.controllers.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.programaformacao.server.models.Donor;
 import com.programaformacao.server.repositories.DonorRepository;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/donors")
