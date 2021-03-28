@@ -3,6 +3,7 @@ package com.programaformacao.server.controllers;
 import com.programaformacao.server.models.SchoolKit;
 import com.programaformacao.server.repositories.KitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,12 @@ public class KitController {
     return ResponseEntity.ok(kitRepository.findAll());
   }
 
-  @PostMapping
+  @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> create(@RequestBody SchoolKit schoolKit) {
+    SchoolKit kit = kitRepository.findByTitle(schoolKit.getTitle());
+    if(kit != null) {
+      return ResponseEntity.ok("{\"error:\" " + " " + "\"Kit já cadastrado\"}");
+    }
     return ResponseEntity.ok(kitRepository.save(schoolKit));
   }
 
