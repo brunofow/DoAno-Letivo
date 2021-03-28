@@ -54,5 +54,4 @@ public class DonorController {
 			throw new DataBaseException(e.getMessage());
 		}
 	}
-
 	}
