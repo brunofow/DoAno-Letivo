@@ -14,7 +14,7 @@ public class Donation {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
-
+    @NotNull
     private String description;
     @NotNull
     @ManyToOne
