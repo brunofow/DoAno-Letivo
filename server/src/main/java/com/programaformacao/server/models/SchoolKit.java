@@ -1,2 +1,4 @@
-package com.programaformacao.server.models;public class SchoolKit {
+package com.programaformacao.server.models;
+
+public class SchoolKit {
 }

@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+src/main/resources/**
+src/main/resources/*
+
+
 # testing
 /coverage
 
