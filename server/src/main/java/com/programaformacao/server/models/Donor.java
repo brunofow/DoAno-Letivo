@@ -28,7 +28,7 @@ public class Donor{
   private String password;
   @NotNull
   private String email;
-
+  @NotNull
   @OneToMany(mappedBy = "donor")
   private List<Donation> donations = new ArrayList<>();
 

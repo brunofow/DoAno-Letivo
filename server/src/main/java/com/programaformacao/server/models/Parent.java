@@ -1,10 +1,14 @@
 package com.programaformacao.server.models;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,7 +32,9 @@ public class Parent {
 
 	private String emittingOrgan;
 
-
+	@OneToMany(mappedBy = "parent")
+	private List<Students> students = new ArrayList<>();
+	
 	public String getRg() {
 		return rg;
 	}

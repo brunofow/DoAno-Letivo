@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Donation {
@@ -15,15 +16,7 @@ public class Donation {
     private Long id;
 
     private String description;
-    
-    public Donation(){
-    }
-    
-    public Donation(Long id, String description) {
-		super();
-		this.id = id;
-		this.description = description;
-	}
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "donor_id")
     private Donor donor;
