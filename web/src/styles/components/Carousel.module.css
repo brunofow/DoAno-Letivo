@@ -1,0 +1,27 @@
+.carouselContainer {
+  width: 50rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 20rem;
+  height: 30rem;
+  background: var(--white);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  backface-visibility: hidden;
+  transition: all .3s;
+}
+
+.selected {
+  position: absolute;
+  z-index: 2;
+  border: 2px solid #000;
+  transform: scale(1.1);
+}
