@@ -1,12 +1,44 @@
 .container {
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .stripe {
+  position: absolute;
+  top: 0;
+  z-index: -1;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 100vw 90vh 0;
+  border-width: 0 95vw 90vh 0;
   border-color: transparent var(--primary) transparent transparent;
+  align-self: flex-end;
+}
+
+.firstSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.firstSection section article {
+  width: 36rem;
+  margin-bottom: 2rem;
+}
+
+.firstSection section article h1 {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: #000000;
+  opacity: .8;
+  margin-bottom: 2rem;
+}
+
+.firstSection img {
+  width: 400px;
 }
