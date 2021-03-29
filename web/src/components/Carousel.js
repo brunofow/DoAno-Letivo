@@ -1,11 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import Carousel, { slidesToShowPlugin } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+import { FcCheckmark } from 'react-icons/fc';
 
 import styles from "../styles/components/Carousel.module.css";
 
-export default function CarouselComponent() {
+export default function CarouselComponent({ data }) {
   const [current, setCurrent] = useState();
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.getElementById('1')?.click();
+    }, 1000)
+  }, [])
 
   function handleCarouselNext(target) {
     if (current !== target) {
@@ -39,45 +46,22 @@ export default function CarouselComponent() {
         ]}
         animationSpeed={300}
       >
-        <div
-          onClick={(event) => handleCarouselNext(event.target)}
-          className={`${styles.card}`}
-        >
-          <header>Kit Educação Infantil - Infantil I e II </header>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
+        {data.map(item => (
+          <div key={item.id} id={item.id} className={styles.card} onClick={event => handleCarouselNext(event.target)} >
+            <div className={styles.bean} ></div>
+            <header><h3>{item.title}</h3></header>
+            <ul>
+            {item.description.map(descriptionItem => (
+              <li>
+                <span> <FcCheckmark /> {descriptionItem} </span>
+              </li>
+            ))}
+            </ul>
+            <button className={styles.} >
 
-          <button>Escolher Kit</button>
-        </div>
-        <div
-          onClick={(event) => handleCarouselNext(event.target)}
-          className={`${styles.card}`}
-        >
-          <header>Kit Educação Infantil - GRande </header>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-
-          <button>Escolher Kit</button>
-        </div>
-        <div
-          onClick={(event) => handleCarouselNext(event.target)}
-          className={`${styles.card}`}
-        >
-          <header>Kit Educação Infantil - Médio </header>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-
-          <button>Escolher Kit</button>
-        </div>
+            </button>
+          </div>
+        ))}       
       </Carousel>
     </div>
   );

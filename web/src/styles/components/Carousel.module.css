@@ -1,27 +1,62 @@
 .carouselContainer {
-  width: 50rem;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 95%;
+  height: 35rem;
+  margin-top: 0;
 }
 
 .card {
-  width: 20rem;
+  width: 99%;
   height: 30rem;
-  background: var(--white);
+  border-radius: 8px;
+  background: #F9FAFB;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   backface-visibility: hidden;
-  transition: all .3s;
+  transition: transform .3s;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
 }
 
+.card button {
+  
+}
+
+.card header {
+  background: var(--white);
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.card ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  pointer-events: none;
+}
+
+
 .selected {
+  margin-top: 3.1rem;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   border: 2px solid #000;
   transform: scale(1.1);
+}
+
+.selected .bean {
+  position: absolute;
+  top: -.6rem;
+  border-radius: 1rem;
+  width: 9rem;
+  height: 1.2rem;
+  background: var(--dark);
 }

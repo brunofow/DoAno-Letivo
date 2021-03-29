@@ -1,4 +1,4 @@
-button {
+.button {
   width: 535px;
   height: 48px;
   background: var(--primary);
