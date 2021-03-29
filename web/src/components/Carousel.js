@@ -1,83 +1,68 @@
-import { useState, useRef } from "react";
-import Carousel, { slidesToShowPlugin } from "@brainhubeu/react-carousel";
-import "@brainhubeu/react-carousel/lib/style.css";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { FcCheckmark } from "react-icons/fc";
+import Button from "./Button";
 import styles from "../styles/components/Carousel.module.css";
 
-export default function CarouselComponent() {
-  const [current, setCurrent] = useState();
+export default function CarouselComponent({ data }) {
 
-  function handleCarouselNext(target) {
-    if (current !== target) {
-      current?.classList.remove(styles.selected);
-
-      setCurrent(target);
-      setTimeout(() => {
-        target.classList.add(styles.selected);
-      }, 100);
-    }
-
-    setCurrent(target);
-    setTimeout(() => {
-      target.classList.add(styles.selected);
-    }, 100);
-  }
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 1,
+      
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
 
   return (
     <div className={styles.carouselContainer}>
       <Carousel
-        plugins={[
-          "centered",
-          "infinite",
-          "clickToChange",
-          {
-            resolve: slidesToShowPlugin,
-            options: {
-              numberOfSlides: 3,
-            },
-          },
-        ]}
-        animationSpeed={300}
+        
+        afterChange={(previousSlide, { currentSlide, onMove }) => {
+          console.log(currentSlide)
+        }}
+        responsive={responsive}
+        arrows={true}
+        className="carousel-container"
+        containerClass="carousel-container"
+        itemClass="carousel-item"
+        keyBoardControl={false}
+        draggable
+        focusOnSelect={false}
+        infinite
       >
-        <div
-          onClick={(event) => handleCarouselNext(event.target)}
-          className={`${styles.card}`}
-        >
-          <header>Kit Educação Infantil - Infantil I e II </header>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-
-          <button>Escolher Kit</button>
-        </div>
-        <div
-          onClick={(event) => handleCarouselNext(event.target)}
-          className={`${styles.card}`}
-        >
-          <header>Kit Educação Infantil - GRande </header>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-
-          <button>Escolher Kit</button>
-        </div>
-        <div
-          onClick={(event) => handleCarouselNext(event.target)}
-          className={`${styles.card}`}
-        >
-          <header>Kit Educação Infantil - Médio </header>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-          <span>Agenda Educação Infantil - 01 unidade</span>
-
-          <button>Escolher Kit</button>
-        </div>
+        {data.map((item) => (
+          <div key={item.id} id={item.id} className={styles.card}>
+            <div className={styles.bean}></div>
+            <header>
+              <h3>{item.title}</h3>
+            </header>
+            <ul>
+              {item.description.map((descriptionItem) => (
+                <li>
+                  <span>
+                    {" "}
+                    <FcCheckmark /> {descriptionItem}{" "}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a>
+              <Button>Escolher kit</Button>
+            </a>
+          </div>
+        ))}
       </Carousel>
     </div>
   );

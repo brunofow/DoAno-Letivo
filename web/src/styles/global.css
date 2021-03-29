@@ -5,11 +5,16 @@
   box-sizing: border-box;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 :root {
   --green: #4D8B31;
   --orange: #FF8427;
   --primary: #FFC800;
   --dark: #1E212B;
+  --footer: ##F3F4F6;
   --white: #FFFFFF;
 }
 
@@ -23,11 +28,6 @@
   html {
     font-size: 87.5%;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--text);
 }
 
 body,
