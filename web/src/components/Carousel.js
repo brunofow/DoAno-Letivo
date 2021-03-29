@@ -4,7 +4,7 @@ import { FcCheckmark } from "react-icons/fc";
 import Button from "./Button";
 import styles from "../styles/components/Carousel.module.css";
 
-export default function CarouselComponent({ data }) {
+export default function CarouselComponent({ data, price }) {
 
   const responsive = {
     desktop: {
@@ -47,6 +47,7 @@ export default function CarouselComponent({ data }) {
             <div className={styles.bean}></div>
             <header>
               <h3>{item.title}</h3>
+              {price ? item.price : ''}
             </header>
             <ul>
               {item.description.map((descriptionItem) => (
