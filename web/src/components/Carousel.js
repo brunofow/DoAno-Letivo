@@ -1,67 +1,68 @@
-import { useState, useEffect } from "react";
-import Carousel, { slidesToShowPlugin } from "@brainhubeu/react-carousel";
-import "@brainhubeu/react-carousel/lib/style.css";
-import { FcCheckmark } from 'react-icons/fc';
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { FcCheckmark } from "react-icons/fc";
+import Button from "./Button";
 import styles from "../styles/components/Carousel.module.css";
 
 export default function CarouselComponent({ data }) {
-  const [current, setCurrent] = useState();
 
-  useEffect(() => {
-    setTimeout(() => {
-      document.getElementById('1')?.click();
-    }, 1000)
-  }, [])
-
-  function handleCarouselNext(target) {
-    if (current !== target) {
-      current?.classList.remove(styles.selected);
-
-      setCurrent(target);
-      setTimeout(() => {
-        target.classList.add(styles.selected);
-      }, 100);
-    }
-
-    setCurrent(target);
-    setTimeout(() => {
-      target.classList.add(styles.selected);
-    }, 100);
-  }
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+      
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
 
   return (
     <div className={styles.carouselContainer}>
       <Carousel
-        plugins={[
-          "centered",
-          "infinite",
-          "clickToChange",
-          {
-            resolve: slidesToShowPlugin,
-            options: {
-              numberOfSlides: 3,
-            },
-          },
-        ]}
-        animationSpeed={300}
+        
+        afterChange={(previousSlide, { currentSlide, onMove }) => {
+          console.log(currentSlide)
+        }}
+        responsive={responsive}
+        arrows={false}
+        className="carousel-container"
+        containerClass="carousel-container"
+        itemClass="carousel-item"
+        keyBoardControl={false}
+        draggable
+        focusOnSelect={false}
+        infinite
       >
-        {data.map(item => (
-          <div key={item.id} id={item.id} className={styles.card} onClick={event => handleCarouselNext(event.target)} >
-            <div className={styles.bean} ></div>
-            <header><h3>{item.title}</h3></header>
+        {data.map((item) => (
+          <div key={item.id} id={item.id} className={styles.card}>
+            <div className={styles.bean}></div>
+            <header>
+              <h3>{item.title}</h3>
+            </header>
             <ul>
-            {item.description.map(descriptionItem => (
-              <li>
-                <span> <FcCheckmark /> {descriptionItem} </span>
-              </li>
-            ))}
+              {item.description.map((descriptionItem) => (
+                <li>
+                  <span>
+                    {" "}
+                    <FcCheckmark /> {descriptionItem}{" "}
+                  </span>
+                </li>
+              ))}
             </ul>
-            <button className={styles.} >
-
-            </button>
+            <a>
+              <Button>Escolher kit</Button>
+            </a>
           </div>
-        ))}       
+        ))}
       </Carousel>
     </div>
   );

@@ -14,8 +14,6 @@ export default function Parent() {
 
   async function loadKits() {
     const response = await api.get('/kits');
-
-    console.log(response.data);
     setKits(response.data);
   }
 
