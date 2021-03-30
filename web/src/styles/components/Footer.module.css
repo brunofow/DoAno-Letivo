@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  background: #F3F4F6;
+  background: var(--light);
   display: flex;
   height: 15rem;
   align-items: center;

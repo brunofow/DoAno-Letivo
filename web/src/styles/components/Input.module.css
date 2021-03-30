@@ -1,0 +1,42 @@
+.inputBox {
+  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBox input {
+  width: 400px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #D1D5DB;
+  padding-left: 10px;
+  transition: border .3s;
+}
+
+.inputBox input:focus {
+  border: 2px solid var(--primary);
+}
+
+.inputBox input:focus + label {
+  color:var(--primary);
+}
+
+.inputBox label {
+  color: #969696;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  cursor: text;
+  user-select: none;
+  transition: all .3s;
+}
+
+.inputBox input:focus + label,
+.inputBox input:not(:placeholder-shown) + label {
+  transform: translate(-5px, -32px);
+}
+
+.inputBox input::-webkit-inner-spin-button {
+  display: none;
+}
