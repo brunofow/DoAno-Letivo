@@ -1,0 +1,55 @@
+.footer {
+  width: 100%;
+  background: #F3F4F6;
+  display: flex;
+  height: 15rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer div:first-child {
+  align-items: center;
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+
+.footer div h5 {
+  font-weight: normal;
+}
+
+.footer div span {
+  color: #6B7280;
+}
+
+.footer section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+.footer input {
+  width: 20rem;
+  height: 2rem;
+  border-radius: 6px;
+  border: 1px solid #D1D5DB;
+  padding-left: 10px;
+}
+
+.footer button {
+  width: 8rem;
+  height: 2rem;
+  margin-left: 1rem;
+  background: var(--primary);
+  border: 0;
+  border-radius: 6px;
+  font-size: .8rem;
+  color: #FFF;
+  font-weight: bold;
+  transition: filter .3s;
+}
+
+.footer button:hover {
+  filter: brightness(0.9);
+}
