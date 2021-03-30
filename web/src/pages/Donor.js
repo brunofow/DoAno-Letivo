@@ -9,11 +9,13 @@ import styles from '../styles/pages/Donor.module.css'
 import {FiChevronsDown} from 'react-icons/fi'
 import logo from '../styles/images/hero.svg'
 import useWindowDimensions from '../hooks/useWindowDimension';
+import LoginModal from '../components/LoginModal';
 
 export default function Donor() {
   const { height } = useWindowDimensions();
   const [ kits, setKits ] = useState([]);
   const [ isModalOpen, setIsModalOpen ] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -35,7 +37,7 @@ export default function Donor() {
 
   return (
     <>
-    <Header pageTitle="Como doar" />
+    <Header setIsLoginModalOpen={setIsLoginModalOpen} pageTitle="Como doar" />
     <div className={styles.container}>
       <div className={styles.stripe}></div>
       <div className={styles.firstSection} style={{ height }}>
@@ -78,6 +80,7 @@ export default function Donor() {
     </div>
     <Footer />
     { isModalOpen && <RegisterModal donor setIsModalOpen={setIsModalOpen} /> }
+    { isLoginModalOpen && <LoginModal donor setIsModalOpen={setIsLoginModalOpen}/>}
     </>
   );
 }
