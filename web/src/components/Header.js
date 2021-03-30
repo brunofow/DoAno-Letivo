@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/components/Header.module.css';
 
-export default function Header({ pageTitle }) {
+export default function Header({ pageTitle, setIsLoginModalOpen }) {
   return (
     <header className={styles.header} >
       <Link to="/">
@@ -22,7 +22,7 @@ export default function Header({ pageTitle }) {
         <a href="#" >
           Cadastrar
         </a>
-        <a href="#">
+        <a onClick={() => setIsLoginModalOpen(true)}>
           Entrar
         </a>
       </div>

@@ -10,11 +10,13 @@ import styles from "../styles/pages/Parent.module.css";
 
 import logo from "../styles/images/Mask Group.svg";
 import useWindowDimensions from "../hooks/useWindowDimension";
+import LoginModal from "../components/LoginModal";
 
 export default function Parent() {
   const { height } = useWindowDimensions();
   const [kits, setKits] = useState([]);
   const [ isModalOpen, setIsModalOpen ] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,7 +38,7 @@ export default function Parent() {
 
   return (
     <>
-    <Header pageTitle="Como receber doação" />
+    <Header setIsLoginModalOpen={setIsLoginModalOpen} pageTitle="Como receber doação" />
       <div className={`${styles.container}`} >
         <div className={styles.stripe}></div>
         <div className={styles.firstSection} style={{ height }}>
@@ -84,6 +86,7 @@ export default function Parent() {
       </div>
       <Footer />
       { isModalOpen && <RegisterModal setIsModalOpen={setIsModalOpen} /> }
+      { isLoginModalOpen && <LoginModal setIsModalOpen={setIsLoginModalOpen}/>}
     </>
   );
 }
