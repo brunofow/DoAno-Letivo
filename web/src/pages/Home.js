@@ -8,7 +8,7 @@ import styles from "../styles/pages/Home.module.css";
 import logo from "../styles/images/hero.svg";
 import family from "../styles/images/Croods - Party Time (1) 1.svg";
 import hand from "../styles/images/Hands - Show 1.svg";
-import book from '../styles/images/Hands - Book 1.svg';
+import book from "../styles/images/Hands - Book 1.svg";
 
 export default function Home() {
   const { height } = useWindowDimensions();
@@ -30,7 +30,7 @@ export default function Home() {
                 </span>
               </article>
             </section>
-            <img src={logo} />
+            <img src={logo} alt="Menina segurando lápis" />
           </div>
           <div className={styles.seeMore}>
             <a href="#choose">
@@ -43,22 +43,26 @@ export default function Home() {
         </div>
 
         <div className={styles.profiles}>
-          <section>
-            <h4>Famílias</h4>
-            <img src={family} alt="Família" />
-            <span>
-              Se você quer saber como fazer para receber uma doação <br />
-              <Link to="/parent#init">clique aqui</Link>
-            </span>
-          </section>
-          <section>
-            <h4>Doadores</h4>
-            <img src={hand} alt="Mão segurando coração" />
-            <span>
-              Se você quer saber como fazer uma doação <br />
-              <Link to="/donor">clique aqui</Link>
-            </span>
-          </section>
+          <Link to="/parent">
+            <section>
+              <h4>Famílias</h4>
+              <img src={family} alt="Família" />
+              <span>
+                Se você quer saber como fazer para receber uma doação <br />
+                clique aqui
+              </span>
+            </section>
+          </Link>
+          <Link to="/donor">
+            <section>
+              <h4>Doadores</h4>
+              <img src={hand} alt="Mão segurando coração" />
+              <span>
+                Se você quer saber como fazer uma doação <br />
+                <Link to="/donor">clique aqui</Link>
+              </span>
+            </section>
+          </Link>
         </div>
 
         <div className={styles.about}>

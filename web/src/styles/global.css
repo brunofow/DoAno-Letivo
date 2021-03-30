@@ -15,8 +15,8 @@ html, body {
   --orange: #FF8427;
   --primary: #FFC800;
   --dark: #1E212B;
-  --footer: ##F3F4F6;
   --white: #FFFFFF;
+  --light: #F3F4F6;
 }
 
 @media (max-width: 1080px) {
