@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import api from '../services/api';
 import Carousel from '../components/Carousel'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Button from '../components/Button'
 import styles from '../styles/pages/Donor.module.css'
 import {FiChevronsDown} from 'react-icons/fi'
@@ -10,6 +12,10 @@ import useWindowDimensions from '../hooks/useWindowDimension';
 export default function Donor() {
   const { height } = useWindowDimensions();
   const [ kits, setKits ] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   async function loadKits() {
     const response = await api.get('/kits');
@@ -21,6 +27,8 @@ export default function Donor() {
   }, [])
 
   return (
+    <>
+    <Header pageTitle="Como doar" />
     <div className={styles.container}>
       <div className={styles.stripe}></div>
       <div className={styles.firstSection} style={{ height }}>
@@ -61,6 +69,8 @@ export default function Donor() {
       </div>
       <Carousel data={kits} price />
     </div>
+    <Footer />
+    </>
   );
 }
 

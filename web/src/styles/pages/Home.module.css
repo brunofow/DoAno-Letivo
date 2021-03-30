@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,8 +21,27 @@
 .firstSection {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.detailsContainer {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.detailsContainer h1 {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: #000000;
+  opacity: 0.8;
+  line-height: 3.7rem;
+  margin-bottom: 2rem;
 }
 
 .firstSection section article {
@@ -31,14 +49,112 @@
   margin-bottom: 2rem;
 }
 
-.firstSection section article h1 {
-  font-size: 3.75rem;
-  font-weight: 800;
-  color: #000000;
-  opacity: .8;
-  margin-bottom: 2rem;
-}
-
 .firstSection img {
   width: 400px;
+  height: 400px;
+}
+
+.seeMore {
+  width: 100%;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.seeMore svg {
+  cursor: pointer;
+  transition: transform .4s;
+  color: var(--dark);
+}
+
+.seeMore svg:hover {
+  transform: translateY(.4rem);
+}
+
+.chooseProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10rem;
+  background: var(--primary);
+}
+
+.chooseProfile h1 {
+  font-size: 3rem;
+  
+}
+
+.profiles {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.profiles section {
+  width: 30rem;
+  height: 35rem;
+  border-radius: 8px;
+  background: rgba(255, 200, 0, 0.17);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; 
+}
+
+.profiles section h4 {
+  background: var(--white);
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.profiles section span {
+  text-align: center;
+  width: 100%;
+}
+
+.about {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.about h1 {
+  margin-bottom: 1rem;
+}
+
+.about p {
+  width: 48%;
+  text-align: center;
+}
+
+.about div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about section {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10rem;
+  text-align: start;
+}
+
+.about section h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.about section p {
+  text-align: start;
 }

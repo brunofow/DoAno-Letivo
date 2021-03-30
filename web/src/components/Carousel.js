@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FcCheckmark } from "react-icons/fc";
@@ -5,13 +6,27 @@ import Button from "./Button";
 import styles from "../styles/components/Carousel.module.css";
 
 export default function CarouselComponent({ data, price }) {
+  const [ previousItem, setPreviousItem ] = useState(null);
+  const [ currentItem, setCurrentItem ] = useState(0);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll('.react-multi-carousel-item--active');
+    console.log(elements[1]);
+    console.log(elements[1]?.getElementsByClassName('actualCard')[0]);
+    const actualItem = elements[1]?.getElementsByClassName('actualCard')[0];
+    actualItem?.classList.add(styles.selected);
+    setPreviousItem(actualItem);
+
+    if(previousItem != actualItem) {
+      previousItem?.classList.remove(styles.selected);
+    }
+  }, [currentItem]);
 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
-      slidesToSlide: 1,
-      
+      slidesToSlide: 1,      
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -30,7 +45,8 @@ export default function CarouselComponent({ data, price }) {
       <Carousel
         
         afterChange={(previousSlide, { currentSlide, onMove }) => {
-          console.log(currentSlide)
+          
+          setCurrentItem(currentSlide);
         }}
         responsive={responsive}
         arrows={true}
@@ -43,7 +59,7 @@ export default function CarouselComponent({ data, price }) {
         infinite
       >
         {data.map((item) => (
-          <div key={item.id} id={item.id} className={styles.card}>
+          <div key={item.id} id={item.id} className={`${styles.card} actualCard`}>
             <div className={styles.bean}></div>
             <header>
               <h3>{item.title}</h3>

@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
 import styles from '../styles/components/Header.module.css';
 
 export default function Header({ pageTitle }) {
   return (
     <header className={styles.header} >
-      <h2>DoAno Letivo</h2>
+      <Link to="/">
+        <h2>DoAno Letivo</h2>
+      </Link>
 
       <div>
         <a href="#steps" >

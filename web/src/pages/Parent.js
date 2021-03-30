@@ -14,6 +14,10 @@ export default function Parent() {
   const { height } = useWindowDimensions();
   const [kits, setKits] = useState([]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   async function loadKits() {
     const response = await api.get("/kits");
     setKits(response.data);
