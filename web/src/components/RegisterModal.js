@@ -1,5 +1,6 @@
 import styles from "../styles/components/RegisterModal.module.css";
 import { Form } from "@unform/web";
+import api from '../services/api';
 import Input from "./Input";
 import Button from "./Button";
 import { FiChevronLeft } from "react-icons/fi";
@@ -8,8 +9,14 @@ import { useRef } from "react";
 export default function RegisterModal({ setIsModalOpen, donor }) {
   const formRef = useRef(null);
 
-  function handleSubmit(data, { reset }) {
-    console.log(data);
+  async function handleSubmit(data, { reset }) {
+    const sendData = {
+      accountType: donor ? "donor" : "parent",
+      ...data
+    }
+    const response = await api.post('/register', sendData);
+
+    localStorage.setItem("user_id", response.data.id);
 
     reset();
   }
@@ -23,7 +30,7 @@ export default function RegisterModal({ setIsModalOpen, donor }) {
           <Input type="email" name="email" placeholder="E-mail" />
           <div className={styles.rg} >
             <Input name="rg" placeholder="RG" />
-            <Input name="emmitingOrgan" placeholder="Órgão Emissor" />
+            <Input name="emittingOrgan" placeholder="Órgão Emissor" />
           </div>
           <Input name="phone" type="number" placeholder={donor ? "Telefone" : "Telefone do responsável"} />
           <Input type="password" name="password" placeholder="Senha" />
