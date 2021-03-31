@@ -1,11 +1,8 @@
 package com.programaformacao.server.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,17 +16,19 @@ public class Students {
 	@NotNull
 	@Size(min = 2, max = 50)
 	private String name;
-	
-	@NotNull
-	private String escola;
 
-	@NotNull
-	private String serie;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "kit_id")
+	private SchoolKit kit;
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name ="students_id")
 	@NotNull
 	private School school;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "parent_id")
 	private Parent parent;
@@ -50,20 +49,28 @@ public class Students {
 		this.name = name;
 	}
 
-	public String getEscola() {
-		return escola;
+	public SchoolKit getKit() {
+		return kit;
 	}
 
-	public void setEscola(String escola) {
-		this.escola = escola;
+	public void setKit(SchoolKit kit) {
+		this.kit = kit;
 	}
 
-	public String getSerie() {
-		return serie;
+	public School getSchool() {
+		return school;
 	}
 
-	public void setSerie(String serie) {
-		this.serie = serie;
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+	public Parent getParent() {
+		return parent;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
 
 	@Override

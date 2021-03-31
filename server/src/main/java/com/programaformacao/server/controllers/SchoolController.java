@@ -21,6 +21,7 @@ import com.programaformacao.server.repositories.SchoolRepository;
 public class SchoolController {
 	@Autowired
 	private SchoolRepository repository;
+
 	@GetMapping()
 	public ResponseEntity<?> index() {
 	    return ResponseEntity.ok(repository.findAll());

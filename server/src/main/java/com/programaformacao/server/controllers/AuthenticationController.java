@@ -65,10 +65,10 @@ public class AuthenticationController {
     String errorResponse = "{\"error:\" \"Email já cadastrado no banco de dados\"}";
 
     if (registerForm.getAccountType().equals("parent")) {
-      Parent dbParend = parentRepository.findByEmail(registerForm.getEmail());
+      Parent dbParent = parentRepository.findByEmail(registerForm.getEmail());
       Parent parent = new Parent();
       String hashedPassword = passwordEncoder().encode(registerForm.getPassword());
-      if(dbParend != null) {
+      if(dbParent != null) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
       } else {
         parent.setEmail(registerForm.getEmail());

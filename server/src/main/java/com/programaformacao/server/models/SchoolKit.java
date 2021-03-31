@@ -1,9 +1,9 @@
 package com.programaformacao.server.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +19,10 @@ public class SchoolKit {
   private ArrayList<String> description;
 
   private double price;
+
+  @OneToMany( fetch = FetchType.EAGER, mappedBy = "kit")
+  @Fetch(FetchMode.SUBSELECT)
+  private List<Students> students = new ArrayList<>();
 
   public Long getId() {
     return id;
@@ -44,6 +48,13 @@ public class SchoolKit {
     this.description = description;
   }
 
+  public List<Students> getStudents() {
+    return students;
+  }
+
+  public void setStudents(List<Students> students) {
+    this.students = students;
+  }
 
   public double getPrice() {
     return price;
