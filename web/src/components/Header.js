@@ -6,7 +6,7 @@ import styles from '../styles/components/Header.module.css';
 export default function Header({ pageTitle, donor }) {
   const { setIsLoginModalOpen, setIsRegisterModalOpen, setDonor } = useContext(FormContext);
 
-  useEffect(() => {
+  useEffect(() => { 
     donor ? setDonor(true) : setDonor(false);
   }, [donor])
 

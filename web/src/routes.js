@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Donor from './pages/Donor';
 import Parent from './pages/Parent';
-
+import ListStudents from './pages/ListStudents';
 export default function Routes() {
   return (
     <BrowserRouter>
@@ -11,6 +11,7 @@ export default function Routes() {
         <Route path="/" exact component={Home} />
         <Route path="/donor" component={Donor} />
         <Route path="/parent" component={Parent}/>
+        <Route path="/listStudents" component={ListStudents}/> 
       </Switch>
     </BrowserRouter>
   )
