@@ -32,7 +32,7 @@ public class AuthenticationController {
   }
 
   private String loginResponse(Long id) {
-    return "{\"user_id:\" " + id + "}";
+    return "{\"user_id\": " + id + "}";
   }
 
   @PostMapping( value = "/login", produces = MediaType.APPLICATION_JSON_VALUE )
