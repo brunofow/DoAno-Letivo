@@ -30,6 +30,11 @@
   top: 0.6rem;
   left: 0.6rem;
   cursor: pointer;
+  transition: filter .3s;
+}
+
+.modal > svg:hover {
+  filter: brightness(.9);
 }
 
 .modal .rg {

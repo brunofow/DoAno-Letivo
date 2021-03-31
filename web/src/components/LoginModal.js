@@ -4,8 +4,11 @@ import api from '../services/api';
 import Input from "./Input";
 import Button from "./Button";
 import { FiChevronLeft } from "react-icons/fi";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { FormContext } from "../contexts/FormContext";
 export default function LoginModal({setIsModalOpen, donor}){
+    const { setIsLoginModalOpen } = useContext(FormContext);
+    
     const formRef = useRef(null);
     async function handleSubmit(data, {reset}){
         const sendData = {
@@ -20,7 +23,7 @@ export default function LoginModal({setIsModalOpen, donor}){
     return (
         <div className={styles.overlay}>
             <div className={styles.modal}>
-                <FiChevronLeft onClick={() => setIsModalOpen(false)} size={40} />
+                <FiChevronLeft onClick={() => setIsLoginModalOpen(false)} size={40} />
                 <Form ref={formRef} onSubmit={handleSubmit}>
                 <Input type="email" name="email" placeholder={"E-mail"}/>
                 <Input type="password" name="password" placeholder="Senha"></Input>

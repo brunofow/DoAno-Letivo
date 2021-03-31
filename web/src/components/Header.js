@@ -1,7 +1,15 @@
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FormContext } from '../contexts/FormContext';
 import styles from '../styles/components/Header.module.css';
 
-export default function Header({ pageTitle, setIsLoginModalOpen }) {
+export default function Header({ pageTitle, donor }) {
+  const { setIsLoginModalOpen, setIsRegisterModalOpen, setDonor } = useContext(FormContext);
+
+  useEffect(() => {
+    donor ? setDonor(true) : setDonor(false);
+  }, [donor])
+
   return (
     <header className={styles.header} >
       <Link to="/">
@@ -19,7 +27,7 @@ export default function Header({ pageTitle, setIsLoginModalOpen }) {
           |
         </span>
 
-        <a href="#" >
+        <a onClick={() => setIsRegisterModalOpen(true)} >
           Cadastrar
         </a>
         <a onClick={() => setIsLoginModalOpen(true)}>

@@ -1,19 +1,12 @@
 import { useEffect } from 'react';
+import { FormProvider } from './contexts/FormContext';
 import Routes from './routes';
-
-function ScrollToTop() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [])
-
-  return null;
-}
 
 function App() {
   return (
-    <Routes>
-      <ScrollToTop />
-    </Routes>
+    <FormProvider>
+      <Routes />
+    </FormProvider>
   );
 }
 

@@ -1,6 +1,5 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import api from '../services/api';
-import RegisterModal from '../components/RegisterModal';
 import Carousel from '../components/Carousel'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,18 +8,13 @@ import styles from '../styles/pages/Donor.module.css'
 import {FiChevronsDown} from 'react-icons/fi'
 import logo from '../styles/images/hero.svg'
 import useWindowDimensions from '../hooks/useWindowDimension';
-import LoginModal from '../components/LoginModal';
+import { FormContext } from '../contexts/FormContext';
 
 export default function Donor() {
+  const { setIsLoginModalOpen, setIsRegisterModalOpen, setDonor } = useContext(FormContext);
   const { height } = useWindowDimensions();
   const [ kits, setKits ] = useState([]);
-  const [ isModalOpen, setIsModalOpen ] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-  useEffect(() => {
-    const body = document.querySelector('body');
-    isModalOpen ? body.classList.add(styles.noscroll) : body.classList.remove(styles.noscroll);
-  }, [isModalOpen])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,9 +29,14 @@ export default function Donor() {
     loadKits();
   }, [])
 
+  function handleOpenRegisterModal() {
+    setDonor(true);
+    setIsRegisterModalOpen(true);
+  }
+
   return (
     <>
-    <Header setIsLoginModalOpen={setIsLoginModalOpen} pageTitle="Como doar" />
+    <Header donor pageTitle="Como doar" />
     <div className={styles.container}>
       <div className={styles.stripe}></div>
       <div className={styles.firstSection} style={{ height }}>
@@ -47,7 +46,7 @@ export default function Donor() {
               <h1>Doar material escolar para quem precisa? Vem com a gente!</h1>
               <span>Doe kits escolares por série para quem necessita</span>
             </article>
-            <Button onClick={() => setIsModalOpen(true)} >Quero fazer uma doação</Button>
+            <Button onClick={handleOpenRegisterModal}>Quero fazer uma doação</Button>
           </section>
           <img src={logo} alt="Doação material escolar" />
         </div>
@@ -79,8 +78,6 @@ export default function Donor() {
       <Carousel data={kits} price />
     </div>
     <Footer />
-    { isModalOpen && <RegisterModal donor setIsModalOpen={setIsModalOpen} /> }
-    { isLoginModalOpen && <LoginModal donor setIsModalOpen={setIsLoginModalOpen}/>}
     </>
   );
 }

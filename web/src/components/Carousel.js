@@ -6,27 +6,44 @@ import Button from "./Button";
 import styles from "../styles/components/Carousel.module.css";
 
 export default function CarouselComponent({ data, price }) {
-  const [ previousItem, setPreviousItem ] = useState(null);
-  const [ currentItem, setCurrentItem ] = useState(0);
+  const [previousItem, setPreviousItem] = useState(null);
+  const [currentItem, setCurrentItem] = useState(0);
 
   useEffect(() => {
-    const elements = document.querySelectorAll('.react-multi-carousel-item--active');
-    console.log(elements[1]);
-    console.log(elements[1]?.getElementsByClassName('actualCard')[0]);
-    const actualItem = elements[1]?.getElementsByClassName('actualCard')[0];
+    const elements = document.querySelectorAll(
+      ".react-multi-carousel-item--active"
+    );
+    const actualItem = elements[1]?.getElementsByClassName("actualCard")[0];
     actualItem?.classList.add(styles.selected);
     setPreviousItem(actualItem);
 
-    if(previousItem != actualItem) {
+    if (previousItem != actualItem) {
       previousItem?.classList.remove(styles.selected);
     }
   }, [currentItem]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const elements = document.querySelectorAll(
+        ".react-multi-carousel-item--active"
+      );
+      console.log(elements[1]);
+      console.log(elements[1]?.getElementsByClassName("actualCard")[0]);
+      const actualItem = elements[1]?.getElementsByClassName("actualCard")[0];
+      actualItem?.classList.add(styles.selected);
+      setPreviousItem(actualItem);
+
+      if (previousItem != actualItem) {
+        previousItem?.classList.remove(styles.selected);
+      }
+    }, 1000);
+  }, [data]);
 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
-      slidesToSlide: 1,      
+      slidesToSlide: 1,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -43,9 +60,7 @@ export default function CarouselComponent({ data, price }) {
   return (
     <div className={styles.carouselContainer}>
       <Carousel
-        
         afterChange={(previousSlide, { currentSlide, onMove }) => {
-          
           setCurrentItem(currentSlide);
         }}
         responsive={responsive}
@@ -59,11 +74,15 @@ export default function CarouselComponent({ data, price }) {
         infinite
       >
         {data.map((item) => (
-          <div key={item.id} id={item.id} className={`${styles.card} actualCard`}>
+          <div
+            key={item.id}
+            id={item.id}
+            className={`${styles.card} actualCard`}
+          >
             <div className={styles.bean}></div>
             <header>
               <h3>{item.title}</h3>
-              {price ? item.price : ''}
+              {price ? item.price : ""}
             </header>
             <ul>
               {item.description.map((descriptionItem) => (

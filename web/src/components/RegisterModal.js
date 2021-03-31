@@ -4,9 +4,11 @@ import api from '../services/api';
 import Input from "./Input";
 import Button from "./Button";
 import { FiChevronLeft } from "react-icons/fi";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { FormContext } from '../contexts/FormContext';
 
-export default function RegisterModal({ setIsModalOpen, donor }) {
+export default function RegisterModal({ donor }) {
+  const { setIsRegisterModalOpen } = useContext(FormContext);
   const formRef = useRef(null);
 
   async function handleSubmit(data, { reset }) {
@@ -24,7 +26,7 @@ export default function RegisterModal({ setIsModalOpen, donor }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <FiChevronLeft onClick={() => setIsModalOpen(false)} size={40} />
+        <FiChevronLeft onClick={() => setIsRegisterModalOpen(false)} size={40} />
         <Form ref={formRef} onSubmit={handleSubmit}>
           <Input name="name" placeholder={donor ? "Nome" : "Nome do responsável"} />
           <Input type="email" name="email" placeholder="E-mail" />
