@@ -126,3 +126,7 @@
 .kitSection p {
   width: 45%; 
 }
+
+.noscroll {
+  overflow:hidden;
+}

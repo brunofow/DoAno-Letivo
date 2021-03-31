@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .stripe {
@@ -70,6 +71,10 @@
   transform: translateY(.4rem);
 }
 
+.stepsTitle {
+  margin-bottom: 4rem;
+}
+
 .steps {
   width: 100%;
   display: flex;
@@ -78,14 +83,16 @@
 }
 
 .steps div {
-  width: 365px;
-  height: 233px;
-  background: rgba(255, 200, 0, 0.17);
+  width: 20rem;
+  height: 20rem;
+  background: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  box-shadow: 0 0 5px #111; 
+  border-radius: 16px;
 }
 
 .steps div h2 {
@@ -117,4 +124,8 @@
 
 .kitSection p {
   width: 45%; 
+}
+
+.noscroll {
+  overflow:hidden;
 }
