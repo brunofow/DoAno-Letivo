@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@reach/router";
 import { FiChevronsDown } from "react-icons/fi";
 import useWindowDimensions from "../hooks/useWindowDimension";
 import Header from "../components/Header";

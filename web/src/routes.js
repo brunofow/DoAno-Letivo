@@ -1,18 +1,20 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Router } from '@reach/router';
 
 import Home from './pages/Home';
 import Donor from './pages/Donor';
 import Parent from './pages/Parent';
+import RegisterStudent from './pages/RegisterStudent';
+import SuccessfulRegister from './pages/SuccessfulRegister';
 import ListStudents from './pages/ListStudents';
 export default function Routes() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/donor" component={Donor} />
-        <Route path="/parent" component={Parent}/>
-        <Route path="/listStudents" component={ListStudents}/> 
-      </Switch>
-    </BrowserRouter>
+    <Router>
+      <Home path="/" />
+      <Donor path="/donor" />
+      <Parent path="/parent" />
+      <ListStudents path="/ListStudents"/>
+      <RegisterStudent path="/registerStudent" />
+      <SuccessfulRegister path="/successful" />
+    </Router>
   )
 }

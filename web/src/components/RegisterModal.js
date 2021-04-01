@@ -1,10 +1,11 @@
+import { useContext, useRef } from "react";
+import { navigate } from '@reach/router';
 import styles from "../styles/components/RegisterModal.module.css";
 import { Form } from "@unform/web";
 import api from '../services/api';
 import Input from "./Input";
 import Button from "./Button";
 import { FiChevronLeft } from "react-icons/fi";
-import { useContext, useRef } from "react";
 import { FormContext } from '../contexts/FormContext';
 
 export default function RegisterModal({ donor }) {
@@ -17,8 +18,12 @@ export default function RegisterModal({ donor }) {
       ...data
     }
     const response = await api.post('/register', sendData);
+    console.log(response.data);
 
-    localStorage.setItem("user_id", response.data.id);
+    if(response.data.user_id) {
+      localStorage.setItem("user_id", response.data.user_id);
+      donor ? navigate("/listStudents") : navigate("/registerStudent");
+    }
 
     reset();
   }
