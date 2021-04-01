@@ -21,7 +21,7 @@ export default function LoginModal({ setIsModalOpen, donor }) {
 
     if (response.data.user_id) {
       localStorage.setItem("user_id", response.data.user_id);
-      donor ? navigate("/listStudents") : navigate("/registerStudent");
+      donor ? navigate("/listStudents") : navigate("/listChildrens");
       reset();
       setIsLoginModalOpen(false);
     }
