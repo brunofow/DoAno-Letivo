@@ -18,12 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
-@RequestMapping("/upload")
+@RequestMapping("/files")
 public class UploadController {
    
    private static String UPLOADED_FOLDER = "src/main/uploads/";
 
-	@GetMapping(value = "/photo/{photo}")
+	@GetMapping(value = "/{photo}")
 	@ResponseBody
 	public ResponseEntity<byte[]> getPhoto(@PathVariable String photo) throws IOException {
 
