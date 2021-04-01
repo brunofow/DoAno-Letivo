@@ -1,0 +1,57 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  width: 30rem;
+  height: 37rem;
+  background: var(--white);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.successIcon {
+  background: #D1FAE5;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.modal button{
+  width: 90%;
+  background: var(--white);
+  transition: all .3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.modal button:hover{
+  background: var(--dark);
+  color: var(--white);
+}
+.succesfulText {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.succesfulText p {
+  color: rgba(30,33,43, 0.6);
+  width: 90%;
+}
