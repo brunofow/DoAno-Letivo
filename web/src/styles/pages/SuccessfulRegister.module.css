@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successfulBox {
+  width: 30rem;
+  height: 80%;
+  border-radius: 8px;
+  background: var(--light);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.successfulBox div {
+  background: #D1FAE5;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.successfulBox p {
+  margin-bottom: 1rem;
+}
+
+.successfulBox p:nth-child(3) {
+  color: #6B7280;
+}
+
+.successfulBox a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.successfulBox button {
+  width: 85%;
+}
+
+.successfulBox a:last-child button {
+  background: var(--white);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+}

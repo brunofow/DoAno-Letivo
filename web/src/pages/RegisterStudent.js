@@ -1,27 +1,66 @@
+import { useEffect, useRef, useState } from "react";
+import { navigate } from '@reach/router';
 import styles from "../styles/pages/RegisterStudent.module.css";
+import api from '../services/api';
 import { Form } from "@unform/web";
-import Select from "react-select";
+import Select from '../components/Select';
 import Input from "../components/Input";
 import Button from '../components/Button';
 import childrens from "../styles/images/undraw_children_4rtb 1.svg";
-import { useRef } from "react";
 import ImageInput from "../components/ImageInput";
 
 function RegisterStudent() {
   const formRef = useRef(null);
+  const [ schools, setSchools ] = useState([]);
+  const [ kits, setKits ] = useState([]);
+  const [ description, setDescription ] = useState('');
 
-  const handleSubmit = (data) => {
-    console.log(data);
-  }
+  async function loadOptions() {
+    const schoolResponse = await api.get('/schools');
+    const kitResponse = await api.get('/kits');
 
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      border: state.isFocused ?'2px solid #FFC800' : '2px solid #D1D5DB',
-      "&:hover": {
-        borderColor: state.isFocused ?'2px solid #FFC800' : '2px solid #D1D5DB'
+    const schoolOptions = schoolResponse.data.map(item => {
+      return {
+        value: item.id,
+        label: item.name
       }
     })
+
+    const kitOptions = kitResponse.data.map(item => {
+      return {
+        value: item.id,
+        label: item.title
+      }
+    })
+
+    setSchools(schoolOptions);
+    setKits(kitOptions);
+  }
+
+  useEffect(() => {
+    loadOptions();
+  }, [])
+
+  const handleSubmit = async (data, {reset}) => {
+    const formData = new FormData();
+    formData.append("avatar", data.avatar);
+    formData.append("name", data.name);
+    formData.append("school_id", data.school_id);
+    formData.append("kit_id", data.kit_id);
+    formData.append("enrollment", data.enrollment);
+    formData.append("description", description);
+
+    const user_id = localStorage.getItem("user_id");
+
+    const response = await api.post(`/students/${user_id}`, formData, {
+      headers: {
+        "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+      },
+    }
+    )
+
+    reset();
+    navigate('/successful');
   }
 
   return (
@@ -33,10 +72,10 @@ function RegisterStudent() {
           <Form ref={formRef} onSubmit={handleSubmit} >
             <ImageInput name="avatar" />
             <Input name="name" placeholder="Nome completo da criança" />
-            <Select className={styles.select} placeholder="Escolha o kit desejado" styles={customStyles} />
-            <Select className={styles.select} placeholder="Nome da escola" styles={customStyles} />
-            <Input name="registration" placeholder="Número da matrícula" />
-            <textarea placeholder="Fale um pouco sobre seu filho" ></textarea>
+            <Select name="kit_id" options={kits} className={styles.select} placeholder="Escolha o kit desejado" />
+            <Select name="school_id" options={schools} className={styles.select} placeholder="Nome da escola" />
+            <Input name="enrollment" placeholder="Número da matrícula" />
+            <textarea value={description} onChange={(event) => setDescription(event.target.value)} placeholder="Fale um pouco sobre seu filho" ></textarea>
             <Button type="submit">Cadastrar</Button>
           </Form>
         </div>

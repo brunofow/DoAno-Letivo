@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Donor from './pages/Donor';
 import Parent from './pages/Parent';
 import RegisterStudent from './pages/RegisterStudent';
+import SuccessfulRegister from './pages/SuccessfulRegister';
 
 export default function Routes() {
   return (
@@ -12,6 +13,7 @@ export default function Routes() {
       <Donor path="/donor" />
       <Parent path="/parent" />
       <RegisterStudent path="/registerStudent" />
+      <SuccessfulRegister path="/successful" />
     </Router>
   )
 }
