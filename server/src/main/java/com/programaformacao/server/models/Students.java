@@ -11,11 +11,18 @@ public class Students {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	
+	private Long id;
+
+	private String avatar;
 	
 	@NotNull
 	@Size(min = 2, max = 50)
 	private String name;
+
+
+	private String description;
+
+	private Integer enrollment;
 
 	@JsonIgnore
 	@ManyToOne
@@ -41,12 +48,36 @@ public class Students {
 		this.id = id;
 	}
 
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Integer getEnrollment() {
+		return enrollment;
+	}
+
+	public void setEnrollment(Integer enrollment) {
+		this.enrollment = enrollment;
 	}
 
 	public SchoolKit getKit() {

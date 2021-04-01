@@ -8,6 +8,10 @@ public class StudentForm {
 
   private Long kit_id;
 
+  private String description;
+
+  private Integer enrollment;
+
   public String getName() {
     return name;
   }
@@ -30,5 +34,21 @@ public class StudentForm {
 
   public void setKit_id(Long kit_id) {
     this.kit_id = kit_id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Integer getEnrollment() {
+    return enrollment;
+  }
+
+  public void setEnrollment(Integer enrollment) {
+    this.enrollment = enrollment;
   }
 }
