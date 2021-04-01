@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { navigate } from '@reach/router';
 import Select from 'react-select';
 import styles from '../styles/pages/ListStudents.module.css';
 import api from '../services/api';
@@ -60,13 +61,13 @@ export default function ListStudents(){
         <div className={styles.container}>
         <div className={styles.list}>
           {students.map(item => (
-            <div key={item.id} className={styles.card}>
+            <div onClick={() => navigate("/finishPayment")} key={item.id} className={styles.card}>
               <img src="http://2.bp.blogspot.com/-CG0eRicN0Ds/UP6e7ZPgNPI/AAAAAAAAAo4/v9q_15DMHIU/s1600/homeless-children.jpg" alt="Estudante" />
               <article className={styles.article}>
                 <p><strong>{item.name}</strong></p>
                 <p>Escola Municipal Degrau do Saber</p>
                 <p>Lorem ipsum dolor sit amet, consectetur elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                sed do eiusmod tempor incididunt ut labore et dolore magna</p>
               </article>
             </div>
           ))}
