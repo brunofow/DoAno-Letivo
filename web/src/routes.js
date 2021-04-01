@@ -9,6 +9,7 @@ import SuccessfulRegister from './pages/SuccessfulRegister';
 import ListChildrens from './pages/ListChildrens';
 import ListStudents from './pages/ListStudents';
 import FinishPayment from './pages/FinishPayment';
+import NotFound from './pages/404';
 
 
 export default function Routes() {
@@ -23,6 +24,7 @@ export default function Routes() {
       <ListChildrens path="/listChildrens" />
       <FinishPayment path="/finishPayment" />
       <Payment path="/payment"/>
+      <NotFound default/>
     </Router>
   )
 }
