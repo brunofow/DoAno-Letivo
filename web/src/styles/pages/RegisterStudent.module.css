@@ -28,13 +28,17 @@
   border-radius: 8px;
 }
 
+.form input {
+  margin-bottom: -1rem;
+}
+
 .form .select {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 
 .form textarea {
   width: 100%;
-  height: 10rem;
+  height: 9rem;
   border: 2px solid #D1D5DB;
   border-radius: 8px;
   resize: none;
@@ -44,4 +48,8 @@
 
 .form textarea:focus {
   border: 2px solid var(--primary);
+}
+
+.form button {
+  height: 38px;
 }
