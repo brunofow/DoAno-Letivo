@@ -19,10 +19,11 @@ export default function Payment({ qrCode, setIsPaymentModalOpen, setSuccessfulPa
             </strong>
             { !qrCode && <div className={styles.pixKey} >8a79e307-p72d-487a-8481-bf08d101f96y</div>}
             { qrCode && <QRCode value="8a79e30d-p71d-487a-8481-bf08d101f96y" />}
-            <div className={styles.loading}></div>
+            <div className={styles.loading}>
+            <div className={styles.dot}></div>
               <div className={styles.dot}></div>
               <div className={styles.dot}></div>
-              <div className={styles.dot}></div>
+            </div>
             </div>
           </div>
       
