@@ -8,6 +8,7 @@ import RegisterStudent from './pages/RegisterStudent';
 import SuccessfulRegister from './pages/SuccessfulRegister';
 import ListStudents from './pages/ListStudents';
 import FinishPayment from './pages/FinishPayment';
+import NotFound from './pages/404';
 
 export default function Routes() {
   return (
@@ -20,6 +21,7 @@ export default function Routes() {
       <SuccessfulRegister path="/successful" />
       <FinishPayment path="/finishPayment" />
       <Payment path="/payment"/>
+      <NotFound default/>
     </Router>
   )
 }
