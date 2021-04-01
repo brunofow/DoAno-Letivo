@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import { FormContext } from '../contexts/FormContext';
 import styles from '../styles/components/Header.module.css';
 
