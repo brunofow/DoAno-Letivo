@@ -1,0 +1,19 @@
+.load {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spin {
+  background: #00000020;
+  border-radius: 50%;
+  border: 5px solid #00000000;
+  
+  animation: load 1s linear infinite;
+}
+
+@keyframes load {
+  100% {
+    transform: rotate(360deg);
+  }
+}
