@@ -1,11 +1,16 @@
 import styles from "../styles/pages/ListChildrens.module.css";
 import { FiX, FiPlus } from "react-icons/fi";
 import { HiOutlinePencil, HiPencil } from 'react-icons/hi';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { navigate } from '@reach/router';
 
 export default function ListChildrens() {
   const [ isPencilHovered, setIsPencilHovered ] = useState(false);
-
+ useEffect(() => {
+    if(!localStorage.getItem("parent_id")){
+      navigate('/parent')
+    }
+  }, [])
   return (
     <div className={styles.container}>
       <header className={styles.header}>

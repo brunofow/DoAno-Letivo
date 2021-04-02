@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
-import { navigate } from '@reach/router';
 import Select from 'react-select';
 import styles from '../styles/pages/ListStudents.module.css';
 import api from '../services/api';
-
+import { navigate } from '@reach/router';
 export default function ListStudents(){
   const [ students, setStudents ] = useState([]);
-  const [ schools, setSchools ] = useState([])
+  const [ schools, setSchools ] = useState([]);
+  
+  useEffect(() => {
+    if(!localStorage.getItem("donor_id")){
+      navigate('/donor');
+    }  
+    }, [])
 
   async function loadStudents() {
     const response = await api.get('/students');

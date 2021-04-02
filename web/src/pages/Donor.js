@@ -9,12 +9,13 @@ import {FiChevronsDown} from 'react-icons/fi'
 import logo from '../styles/images/hero.svg'
 import useWindowDimensions from '../hooks/useWindowDimension';
 import { FormContext } from '../contexts/FormContext';
+import { navigate } from '@reach/router';
 
 export default function Donor() {
   const { setIsLoginModalOpen, setIsRegisterModalOpen, setDonor } = useContext(FormContext);
   const { height } = useWindowDimensions();
   const [ kits, setKits ] = useState([]);
-
+ 
 
   useEffect(() => {
     window.scrollTo(0, 0);

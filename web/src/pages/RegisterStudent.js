@@ -14,6 +14,12 @@ function RegisterStudent() {
   const [ schools, setSchools ] = useState([]);
   const [ kits, setKits ] = useState([]);
   const [ description, setDescription ] = useState('');
+  
+  useEffect(() => {
+    if(!localStorage.getItem("parent_id")){
+      navigate("/parent")
+    }
+  },[])
 
   async function loadOptions() {
     const schoolResponse = await api.get('/schools');
