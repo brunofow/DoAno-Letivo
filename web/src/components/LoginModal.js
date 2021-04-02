@@ -25,7 +25,8 @@ export default function LoginModal({ setIsModalOpen, donor }) {
     const response = await api.post("/login", sendData);
 
     if (response.data.user_id) {
-      localStorage.setItem("user_id", response.data.user_id);
+      const user_id = response.data.user_id;
+      {donor ? localStorage.setItem("donor_id", user_id) : localStorage.setItem("parent_id", user_id)}
       donor ? navigate("/listStudents") : navigate("/listChildrens");
       reset();
       setIsLoginModalOpen(false);
