@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import com.programaformacao.server.models.*;
 import com.programaformacao.server.repositories.KitRepository;
@@ -59,10 +60,10 @@ public class StudentsController {
 	public ResponseEntity<?> post (@ModelAttribute StudentForm form, @PathVariable Long id, @RequestParam("avatar") MultipartFile file){
 		Students student = new Students();
 		try {
-			Date date = new Date();
-			String url = date + file.getOriginalFilename();
+			UUID uuid = UUID.randomUUID();
+			String url = uuid + file.getOriginalFilename();
 			byte[] bytes = file.getBytes();
-			Path path = Paths.get(UPLOADED_FOLDER + date + file.getOriginalFilename());
+			Path path = Paths.get(UPLOADED_FOLDER + uuid + file.getOriginalFilename());
 			Files.write(path, bytes);
 			student.setAvatar(url);
 		} catch (IOException e) {
