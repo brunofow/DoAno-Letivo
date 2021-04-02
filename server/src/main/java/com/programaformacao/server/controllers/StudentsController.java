@@ -88,7 +88,7 @@ public class StudentsController {
 	
 	
 	@PutMapping
-	public ResponseEntity<Students> put (@RequestBody Students name){
+	public ResponseEntity<Students> update(@RequestBody Students name){
 		
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(name));
 	}
