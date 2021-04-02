@@ -12,6 +12,7 @@ import com.programaformacao.server.models.*;
 import com.programaformacao.server.repositories.KitRepository;
 import com.programaformacao.server.repositories.ParentRepository;
 import com.programaformacao.server.repositories.SchoolRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,14 +39,20 @@ public class StudentsController {
 
 	@Autowired
 	private KitRepository kitRepository;
+
 	
-	
-	@GetMapping
-	public ResponseEntity<List<Students>> GetAll(){
-		List<Students> students = new ArrayList<>();
-		
+	@GetMapping()
+	public ResponseEntity<List<Students>> getAll(){
 		return ResponseEntity.ok(repository.findAll());	
-	}		
+	}
+
+	@GetMapping("/parent/{parent_id}")
+	public ResponseEntity<List<Students>> getChildrens(@PathVariable Long parent_id) {
+			Parent parent = parentRepository.findById(parent_id)
+							.orElse(null);
+			return ResponseEntity.ok(parent.getStudents());
+
+	}
 	
 	
 	@PostMapping("/{id}")

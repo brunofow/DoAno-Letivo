@@ -1,6 +1,7 @@
 package com.programaformacao.server.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,15 +25,12 @@ public class Students {
 
 	private Integer enrollment;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "kit_id")
 	private SchoolKit kit;
 
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name ="students_id")
-	@NotNull
+	@JoinColumn(name = "school_id")
 	private School school;
 
 	@JsonIgnore
