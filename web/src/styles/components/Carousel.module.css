@@ -71,6 +71,10 @@
   user-select: none;
 }
 
+.card header h3 {
+  margin-top: 1rem;
+}
+
 .card ul {
   list-style: none;
   height: 100%;

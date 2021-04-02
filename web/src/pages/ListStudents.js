@@ -44,6 +44,10 @@ export default function ListStudents() {
     loadSchools();
   }, []);
 
+  function handlePay(item) {
+    navigate('/finishPayment', { state: { item }})
+  }
+
   const customStyles = {
     control: (provided, state) => ({
       display: "flex",
@@ -87,22 +91,21 @@ export default function ListStudents() {
               <div className={styles.list}>
                 {students.map((item) => (
                   <div
-                    onClick={() => navigate("/finishPayment")}
+                    onClick={() => handlePay(item)}
                     key={item.id}
                     className={styles.card}
                   >
                     <img
-                      src="http://2.bp.blogspot.com/-CG0eRicN0Ds/UP6e7ZPgNPI/AAAAAAAAAo4/v9q_15DMHIU/s1600/homeless-children.jpg"
+                      src={`http://localhost:8080/files/${item.avatar}`}
                       alt="Estudante"
                     />
                     <article className={styles.article}>
                       <p>
                         <strong>{item.name}</strong>
                       </p>
-                      <p>Escola Municipal Degrau do Saber</p>
+                      <p>{item.school.name}</p>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna
+                        {item.description}
                       </p>
                     </article>
                   </div>

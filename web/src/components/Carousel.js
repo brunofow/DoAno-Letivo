@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IntlProvider, FormattedNumber } from "react-intl";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FcCheckmark } from "react-icons/fc";
@@ -80,10 +81,18 @@ export default function CarouselComponent({ data, price }) {
             className={`${styles.card} actualCard`}
           >
             <div className={styles.bean}></div>
-            <header>
-              <h3>{item.title}</h3>
-              {price ? item.price : ""}
-            </header>
+            <IntlProvider locale="pt">
+              <header>
+                <h3>{item.title}</h3>
+                <h1>
+                  <FormattedNumber
+                    value={price && item.price}
+                    style="currency"
+                    currency="BRL"
+                  />
+                </h1>
+              </header>
+            </IntlProvider>
             <ul>
               {item.description.map((descriptionItem) => (
                 <li>
