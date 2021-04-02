@@ -43,8 +43,8 @@ public class StudentsController {
 
 	
 	@GetMapping()
-	public ResponseEntity<List<Students>> getAll(){
-		return ResponseEntity.ok(repository.findAll());	
+	public ResponseEntity<?> getAll(){
+		return ResponseEntity.ok(repository.findByDonatedFalse());	
 	}
 
 	@GetMapping("/parent/{parent_id}")
@@ -88,7 +88,7 @@ public class StudentsController {
 	
 	
 	@PutMapping
-	public ResponseEntity<Students> put (@RequestBody Students name){
+	public ResponseEntity<Students> put (@ModelAttribute Students name){
 		
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(name));
 	}
