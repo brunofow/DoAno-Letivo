@@ -37,7 +37,7 @@ export default function LoginModal({ setIsModalOpen, donor }) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <FiChevronLeft onClick={() => setIsLoginModalOpen(false)} size={40} />
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
           <Input type="email" name="email" placeholder={"E-mail"} />
           <Input type="password" name="password" placeholder="Senha"></Input>
           <Button type="submit">

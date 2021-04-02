@@ -35,6 +35,10 @@
   width: 100%;
 }
 
+.detailsContainer article {
+  width: 40%;
+}
+
 .detailsContainer h1 {
   font-size: 3.75rem;
   font-weight: 800;
@@ -158,4 +162,74 @@
 
 .about section p {
   text-align: start;
+}
+
+@media (max-width: 1024px) {
+  .firstSection img {
+    display: none;
+  }
+
+  .firstSection {
+    justify-content: center;
+    width: 80%;
+  }
+
+  .detailsContainer {
+    margin-top: 0;
+  }
+
+  .detailsContainer article {
+    width: 100%;
+    
+  }
+
+  .chooseProfile h1 {
+    text-align: center;
+  }
+
+  .profiles {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .profiles a {
+    margin-bottom: 2rem;
+    max-width: 90%;
+  }
+
+  .profiles section {
+    max-width: 100%;
+  }
+
+  .profiles img {
+    width: 300px;
+  }
+
+  .about h1 {
+    text-align: center;
+  }
+
+  .about p {
+    margin-bottom: 2rem;
+  }
+
+  .about div {
+    flex-direction: column;
+  }
+
+  .about img {
+    display: none;
+  }
+
+  .about section {
+    grid-template-rows: 16rem;
+    align-items: center;
+    width: 90%;
+  }
+
+  .about section p {
+    text-align: start;
+    width: 100%;
+  }
 }

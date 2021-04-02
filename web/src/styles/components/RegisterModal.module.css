@@ -46,3 +46,21 @@
 .modal .rg input {
   width: 180px;
 }
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+  }
+
+  .modal .rg input {
+    width: 100%;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .form input {
+    width: 100%;
+  }
+}

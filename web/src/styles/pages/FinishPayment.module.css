@@ -86,3 +86,18 @@
 .buttonsContainer button {
   width: 45%;
 }
+
+@media (max-width: 768px) {
+  .paymentContainer {
+    width: 90%;
+  }
+
+  .paymentContainer input {
+    width: 250px;
+  }
+
+  .studentDetails p {
+    text-align: center;
+    margin-top: 1.3rem;
+  }
+}

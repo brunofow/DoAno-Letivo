@@ -68,7 +68,7 @@ export default function ListChildrens() {
 
         </>
       )}
-      <button>
+      <button onClick={() => navigate("/registerStudent", { state: { registered: true }})} >
         <FiPlus size={40} />
       </button>
     </div>

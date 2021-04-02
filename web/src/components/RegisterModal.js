@@ -32,18 +32,18 @@ export default function RegisterModal({ donor }) {
     
     setIsRegisterModalOpen(false);
     setIsLoading(false);
-    reset();
+    
   }
 
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <FiChevronLeft onClick={() => setIsRegisterModalOpen(false)} size={40} />
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
           <Input name="name" placeholder={donor ? "Nome" : "Nome do responsável"} />
           <Input type="email" name="email" placeholder="E-mail" />
           <div className={styles.rg} >
-            <Input name="rg" placeholder="RG" />
+            <Input name="rg" placeholder="RG" type="number" />
             <Input name="emittingOrgan" placeholder="Órgão Emissor" />
           </div>
           <Input name="phone" type="number" placeholder={donor ? "Telefone" : "Telefone do responsável"} />

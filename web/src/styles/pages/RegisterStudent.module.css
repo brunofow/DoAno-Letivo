@@ -7,6 +7,19 @@
   justify-content: space-evenly;
 }
 
+.container > svg {
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+  transition: filter .3s;
+}
+
+.container > svg:hover {
+  filter: brightness(.9);
+}
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -52,4 +65,24 @@
 
 .form button {
   height: 38px;
+}
+
+@media (max-width: 768px) {
+  .container img { display: none;}
+
+  .container {
+    align-items: flex-start;
+  }
+
+  .formContainer {
+    margin-top: 5rem;
+  }
+
+  .form {
+    width: 95%;
+  }
+
+  .form input {
+    width: 350px;
+  }
 }

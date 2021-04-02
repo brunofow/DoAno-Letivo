@@ -48,7 +48,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   background: var(--white);
   margin-bottom: 2rem;
   border-radius: 8px;
@@ -58,8 +57,14 @@
 
 .card img {
   width: 140px;
-  height: 140px;
+  max-height: 9rem;
   object-fit: cover;
+  margin-left: 1rem;
+}
+
+.card article {
+  margin-left: 1rem;
+  width: 100%;
 }
 
 .card p {
@@ -126,5 +131,17 @@
   }
   to {
     width: 35px;
+  }
+}
+
+@media (max-width: 768px ) {
+  
+  .header div {
+    left: 0.6rem;
+    top: 0.6rem; 
+  }
+
+  .cards {
+    width: 90%;
   }
 }
