@@ -16,6 +16,8 @@ export default function Parent() {
   const { height } = useWindowDimensions();
   const [kits, setKits] = useState([]);
 
+  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])

@@ -11,11 +11,16 @@ export default function ListStudents() {
   const [schools, setSchools] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if(!localStorage.getItem("donor_id")){
+      navigate('/donor');
+    }  
+    }, [])
+  
   function handleLogout() {
     localStorage.removeItem("donor_id");
     navigate("/donor");
   }
-
   async function loadStudents() {
     setIsLoading(true);
     const response = await api.get("/students");
@@ -23,6 +28,7 @@ export default function ListStudents() {
     setStudents(response.data);
     setIsLoading(false);
   }
+   
 
   async function loadSchools() {
     const response = await api.get("/schools");

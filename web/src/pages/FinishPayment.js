@@ -14,6 +14,7 @@ export default function FinishPayment(){
   const [ isSuccessfulPaymentOpen, setSuccessfulPaymentOpen ] = useState(false);
   const [ isQrCode, setIsQrCode ] = useState(false);
   
+  
   function handlePay(data, { reset }) {
     setIsPaymentModalOpen(true);
   }

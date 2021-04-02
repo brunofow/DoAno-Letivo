@@ -17,9 +17,15 @@ function RegisterStudent() {
   const [ description, setDescription ] = useState('');
   const [ isLoading, setIsLoading ] = useState(false);
 
-  async function loadOptions() {
+    async function loadOptions() {
     const schoolResponse = await api.get('/schools');
     const kitResponse = await api.get('/kits');
+    
+      useEffect(() => {
+    if(!localStorage.getItem("parent_id")){
+      navigate("/parent")
+    }
+  },[])
 
     const schoolOptions = schoolResponse.data.map(item => {
       return {
