@@ -67,7 +67,8 @@
 }
 
 .card p:last-child {
-  font-size: .8rem;
+  font-size: .9rem;
+  font-style: italic;
 }
 
 .card .edit {

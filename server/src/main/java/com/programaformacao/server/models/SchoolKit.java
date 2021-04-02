@@ -1,5 +1,6 @@
 package com.programaformacao.server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -20,6 +21,7 @@ public class SchoolKit {
 
   private double price;
 
+  @JsonIgnore
   @OneToMany( fetch = FetchType.EAGER, mappedBy = "kit")
   @Fetch(FetchMode.SUBSELECT)
   private List<Students> students = new ArrayList<>();

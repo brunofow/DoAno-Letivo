@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import Button from '../components/Button'
 import styles from '../styles/pages/Donor.module.css'
 import {FiChevronsDown} from 'react-icons/fi'
-import logo from '../styles/images/hero.svg'
+import logo from '../styles/images/Ilustração.svg'
 import useWindowDimensions from '../hooks/useWindowDimension';
 import { FormContext } from '../contexts/FormContext';
 import { navigate } from '@reach/router';

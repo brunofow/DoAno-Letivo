@@ -23,13 +23,14 @@ export default function RegisterModal({ donor }) {
       ...data
     }
     const response = await api.post('/register', sendData);
-    console.log(response.data.user_id);
 
-    if(response.data.user_id) {
-      localStorage.setItem("user_id", response.data.user_id);
+    if(response.data.id) {
+      const user_id = response.data.id;
+      {donor ? localStorage.setItem("donor_id", user_id) : localStorage.setItem("parent_id", user_id)}
       donor ? navigate("/listStudents") : navigate("/registerStudent");
     }
     
+    setIsRegisterModalOpen(false);
     setIsLoading(false);
     reset();
   }

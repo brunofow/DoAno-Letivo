@@ -3,6 +3,7 @@ import { navigate } from '@reach/router';
 import styles from "../styles/pages/RegisterStudent.module.css";
 import api from '../services/api';
 import { Form } from "@unform/web";
+import Spinner from '../components/Spinner';
 import Select from '../components/Select';
 import Input from "../components/Input";
 import Button from '../components/Button';
@@ -14,16 +15,17 @@ function RegisterStudent() {
   const [ schools, setSchools ] = useState([]);
   const [ kits, setKits ] = useState([]);
   const [ description, setDescription ] = useState('');
-  
-  useEffect(() => {
+  const [ isLoading, setIsLoading ] = useState(false);
+
+    async function loadOptions() {
+    const schoolResponse = await api.get('/schools');
+    const kitResponse = await api.get('/kits');
+    
+      useEffect(() => {
     if(!localStorage.getItem("parent_id")){
       navigate("/parent")
     }
   },[])
-
-  async function loadOptions() {
-    const schoolResponse = await api.get('/schools');
-    const kitResponse = await api.get('/kits');
 
     const schoolOptions = schoolResponse.data.map(item => {
       return {
@@ -48,6 +50,7 @@ function RegisterStudent() {
   }, [])
 
   const handleSubmit = async (data, {reset}) => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("avatar", data.avatar);
     formData.append("name", data.name);
@@ -56,15 +59,16 @@ function RegisterStudent() {
     formData.append("enrollment", data.enrollment);
     formData.append("description", description);
 
-    const user_id = localStorage.getItem("user_id");
+    const parent_id = localStorage.getItem("parent_id");
 
-    const response = await api.post(`/students/${user_id}`, formData, {
+    const response = await api.post(`/students/${parent_id}`, formData, {
       headers: {
         "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
       },
     }
     )
 
+    setIsLoading(false);
     reset();
     navigate('/successful');
   }
@@ -82,7 +86,9 @@ function RegisterStudent() {
             <Select name="school_id" options={schools} className={styles.select} placeholder="Nome da escola" />
             <Input name="enrollment" placeholder="Número da matrícula" />
             <textarea value={description} onChange={(event) => setDescription(event.target.value)} placeholder="Fale um pouco sobre seu filho" ></textarea>
-            <Button type="submit">Cadastrar</Button>
+            <Button type="submit">
+              { isLoading ? <Spinner size={30} /> : 'Cadastrar'}
+            </Button>
           </Form>
         </div>
       </div>

@@ -1,5 +1,6 @@
 package com.programaformacao.server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -19,6 +20,7 @@ public class School {
 
   private String address;
 
+  @JsonIgnore
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "school")
   @Fetch(FetchMode.SUBSELECT)
   private List<Students> students = new ArrayList<>();
@@ -39,13 +41,12 @@ public class School {
     this.address = address;
   }
 
-
-  public List<Students> getList() {
+  public List<Students> getStudents() {
     return students;
   }
 
-  public void setList(List<Students> list) {
-    this.students = list;
+  public void setStudents(List<Students> students) {
+    this.students = students;
   }
 
   public Long getId() {
