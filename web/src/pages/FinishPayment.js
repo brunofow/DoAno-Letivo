@@ -22,6 +22,7 @@ export default function FinishPayment(props){
     }
   }, [])
   
+  
   function handlePay(data, { reset }) {
     setIsPaymentModalOpen(true);
   }

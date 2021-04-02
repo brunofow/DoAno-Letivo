@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import { FiChevronsDown } from "react-icons/fi";
 import useWindowDimensions from "../hooks/useWindowDimension";
 import Header from "../components/Header";
@@ -9,9 +9,11 @@ import logo from "../styles/images/hero.svg";
 import family from "../styles/images/Croods - Party Time (1) 1.svg";
 import hand from "../styles/images/Hands - Show 1.svg";
 import book from "../styles/images/Hands - Book 1.svg";
+import { useEffect } from "react";
 
 export default function Home() {
   const { height } = useWindowDimensions();
+
 
   return (
     <>

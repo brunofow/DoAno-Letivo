@@ -3,13 +3,21 @@ import api from '../services/api';
 import { FiX, FiPlus } from "react-icons/fi";
 import { HiOutlinePencil, HiPencil } from 'react-icons/hi';
 import { useEffect, useState } from "react";
+import { navigate } from '@reach/router';
 import Spinner from "../components/Spinner";
-import { navigate } from "@reach/router";
+
+
 
 export default function ListChildrens() {
   const [ isPencilHovered, setIsPencilHovered ] = useState(false);
   const [ childrens, setChildrens ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(false);
+
+   useEffect(() => {
+    if(!localStorage.getItem("parent_id")){
+      navigate('/parent')
+    }
+  }, [])
 
   async function loadChildrens() {
     setIsLoading(true);
