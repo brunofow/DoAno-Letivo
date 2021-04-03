@@ -29,7 +29,11 @@ export default function ListStudents() {
   }
   async function loadStudents() {
     setIsLoading(true);
-    const response = await api.get("/students");
+    const response = await api.get("/students", {
+      headers: {
+        Authorization: localStorage.getItem("secret_key")
+      }
+    });
 
     setStudents(response.data);
     setIsLoading(false);

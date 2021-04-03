@@ -1,6 +1,7 @@
 package com.programaformacao.server.security;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -28,6 +32,7 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
     APIKeyAuthFilter filter = new APIKeyAuthFilter(principalRequestHeader);
     filter.setAuthenticationManager(new AuthenticationManager() {
 
+
       @Override
       public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String principal = (String) authentication.getPrincipal();
@@ -39,13 +44,14 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
         return authentication;
       }
     });
-    httpSecurity.
+    httpSecurity.cors().and().
             antMatcher("/**").
             csrf().disable().
             sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
             and().addFilter(filter).authorizeRequests()
             .antMatchers("/login").permitAll()
             .antMatchers("/register").permitAll()
+            .antMatchers("/kits").permitAll()
             .anyRequest().authenticated();
   }
 
