@@ -27,7 +27,7 @@ export default function Input({ name, placeholder, ...rest }) {
     <div className={styles.inputBox} style={{ marginBottom: error && '3rem'}} >
       <input {...rest} ref={inputRef} id={name} placeholder=" " />
       <label htmlFor={name} >{placeholder}</label>
-      { error && <span>{error}</span>}
+      { error && <p>{error}</p>}
     </div>
   )
 }

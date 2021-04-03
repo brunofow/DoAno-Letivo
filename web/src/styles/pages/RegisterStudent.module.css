@@ -45,6 +45,10 @@
   margin-bottom: -1rem;
 }
 
+.formComponent div p {
+  margin-bottom: -1rem;
+}
+
 .form .select {
   margin-bottom: 1.4rem;
 }
