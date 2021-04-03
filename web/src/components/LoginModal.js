@@ -15,6 +15,7 @@ export default function LoginModal({ setIsModalOpen, donor }) {
   const formRef = useRef(null);
 
   async function handleSubmit(data, { reset }) {
+    
     if(isLoading) return;
 
     setIsLoading(true);
@@ -25,11 +26,15 @@ export default function LoginModal({ setIsModalOpen, donor }) {
     const response = await api.post("/login", sendData);
 
     if (response.data.user_id) {
+      
       const user_id = response.data.user_id;
       {donor ? localStorage.setItem("donor_id", user_id) : localStorage.setItem("parent_id", user_id)}
+      { localStorage.setItem("secret_key", response.data.secret_key)}
       donor ? navigate("/listStudents") : navigate("/listChildrens");
       reset();
       setIsLoginModalOpen(false);
+    } else {
+      alert(response.data.error);
     }
     setIsLoading(false);
   }
@@ -37,7 +42,7 @@ export default function LoginModal({ setIsModalOpen, donor }) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <FiChevronLeft onClick={() => setIsLoginModalOpen(false)} size={40} />
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
           <Input type="email" name="email" placeholder={"E-mail"} />
           <Input type="password" name="password" placeholder="Senha"></Input>
           <Button type="submit">

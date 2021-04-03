@@ -23,6 +23,7 @@ public class Donation {
     private Long id;
 
     private String description;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "donor_id")

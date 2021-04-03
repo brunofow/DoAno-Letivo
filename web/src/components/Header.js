@@ -17,22 +17,27 @@ export default function Header({ pageTitle, donor }) {
       </Link>
 
       <div>
+        <div className={styles.detailButtons}>
         <a href="#steps" >
           {pageTitle}
         </a>
         <a href="#kits">
           Escolha um kit
         </a>
-        <span>
+        </div>
+
+        <span >
           |
         </span>
 
+        <div className={styles.accountButtons}>
         <a onClick={() => setIsRegisterModalOpen(true)} >
           Cadastrar
         </a>
         <a onClick={() => setIsLoginModalOpen(true)}>
           Entrar
         </a>
+        </div>
       </div>
     </header>
   )

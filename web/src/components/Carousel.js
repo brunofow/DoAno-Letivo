@@ -84,13 +84,13 @@ export default function CarouselComponent({ data, price }) {
             <IntlProvider locale="pt">
               <header>
                 <h3>{item.title}</h3>
-                <h1>
+                { price && <h1>
                   <FormattedNumber
-                    value={price && item.price}
+                    value={item.price}
                     style="currency"
                     currency="BRL"
                   />
-                </h1>
+                </h1>}
               </header>
             </IntlProvider>
             <ul>

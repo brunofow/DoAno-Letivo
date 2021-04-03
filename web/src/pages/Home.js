@@ -22,7 +22,7 @@ export default function Home() {
         <div className={styles.stripe}></div>
         <div className={styles.firstSection} style={{ height }}>
           <div className={styles.detailsContainer}>
-            <section>
+            
               <article>
                 <h1>
                   Deseja doar ou receber material escolar? Vem com a gente!
@@ -31,7 +31,7 @@ export default function Home() {
                   Conectamos famílias que precisam a pessoas que querem ajudar
                 </span>
               </article>
-            </section>
+            
             <img src={logo} alt="Menina segurando lápis" />
           </div>
           <div className={styles.seeMore}>

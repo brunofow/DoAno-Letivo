@@ -13,7 +13,7 @@
 
 .modal {
   width: 600px;
-  height: 600px;
+  min-height: 600px;
   background: var(--light);
   border-radius: 6px;
   position: relative;
@@ -37,6 +37,10 @@
   filter: brightness(.9);
 }
 
+.modal .form > div:first-child {
+  margin-top: 2rem;
+}
+
 .modal .rg {
   display: flex;
   width: 100%;
@@ -45,4 +49,30 @@
 
 .modal .rg input {
   width: 180px;
+}
+
+.modal button {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+  }
+
+  .modal .form > div:first-child {
+    margin-top: 4rem;
+  }
+
+  .modal .rg input {
+    width: 100%;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .form input {
+    width: 100%;
+  }
 }

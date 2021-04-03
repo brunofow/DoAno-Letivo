@@ -84,3 +84,13 @@
 .inputBox label img {
   width: 60px;
 }
+
+@media (max-width: 768px) {
+  .inputBox label img {
+    display: block;
+  }
+
+  .preview img {
+    display: block;
+  }
+}

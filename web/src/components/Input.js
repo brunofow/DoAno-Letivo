@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 export default function Input({ name, placeholder, ...rest }) {
   const inputRef = useRef();
 
-  const { fieldName, defaultValue, registerField } = useField(name);
+  const { fieldName, defaultValue, registerField, error } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -24,9 +24,10 @@ export default function Input({ name, placeholder, ...rest }) {
   }, [fieldName, registerField])
 
   return (
-    <div className={styles.inputBox}>
+    <div className={styles.inputBox} style={{ marginBottom: error && '3rem'}} >
       <input {...rest} ref={inputRef} id={name} placeholder=" " />
       <label htmlFor={name} >{placeholder}</label>
+      { error && <span>{error}</span>}
     </div>
   )
 }

@@ -22,7 +22,13 @@ export default function ListChildrens() {
   async function loadChildrens() {
     setIsLoading(true);
     const parent_id = localStorage.getItem("parent_id");
-    const response = await api.get(`/students/parent/${parent_id}`)
+    const secret = localStorage.getItem("secret_key");
+    const response = await api.get(`/students/parent/${parent_id}`, {
+      headers: {
+        Authorization: secret
+      }
+      
+    })
 
     setChildrens(response.data);
     setIsLoading(false);
@@ -68,7 +74,7 @@ export default function ListChildrens() {
 
         </>
       )}
-      <button>
+      <button onClick={() => navigate("/registerStudent", { state: { registered: true }})} >
         <FiPlus size={40} />
       </button>
     </div>

@@ -1,12 +1,17 @@
-.container {
-  width: 100%;
-  height: 100vh;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center
 }
 
-.successfulBox {
+.modal {
   width: 30rem;
   height: 80%;
   border-radius: 8px;
@@ -18,7 +23,7 @@
   justify-content: center;
 }
 
-.successfulBox div {
+.modal div {
   background: #D1FAE5;
   width: 50px;
   height: 50px;
@@ -29,26 +34,33 @@
   margin-bottom: 1rem;
 }
 
-.successfulBox p {
+.modal p {
   margin-bottom: 1rem;
 }
 
-.successfulBox p:nth-child(3) {
+.modal p:nth-child(3) {
   color: #6B7280;
 }
 
-.successfulBox a {
+.modal a {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.successfulBox button {
+.modal button {
   width: 85%;
 }
 
-.successfulBox a:last-child button {
+.modal a:last-child button {
   background: var(--white);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 85%;
+    height: 50%;
+  }
 }

@@ -230,3 +230,14 @@
       top: 38px;
   }
 }
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    height: 35rem;
+  }
+
+  .pixKey {
+    width: 300px;
+  }
+}

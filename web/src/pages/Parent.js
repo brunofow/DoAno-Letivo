@@ -49,7 +49,7 @@ export default function Parent() {
                 <span>Doe kits escolares por série para quem necessita</span>
               </article>
               <Button onClick={handleOpenRegisterModal} >Quero receber material</Button>
-            </section>
+              </section>
             <img src={logo} alt="Materiais escolares" />
           </div>
           <div className={styles.seeMore}>

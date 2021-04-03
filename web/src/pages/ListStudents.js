@@ -5,11 +5,17 @@ import Select from "react-select";
 import Spinner from "../components/Spinner";
 import styles from "../styles/pages/ListStudents.module.css";
 import api from "../services/api";
+import useWindowDimensions from '../hooks/useWindowDimension';
 
 export default function ListStudents() {
   const [students, setStudents] = useState([]);
   const [schools, setSchools] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { width } = useWindowDimensions();
+
+  useEffect(() => {
+    console.log(width)
+  }, [])
 
   useEffect(() => {
     if(!localStorage.getItem("donor_id")){
@@ -23,7 +29,11 @@ export default function ListStudents() {
   }
   async function loadStudents() {
     setIsLoading(true);
-    const response = await api.get("/students");
+    const response = await api.get("/students", {
+      headers: {
+        Authorization: localStorage.getItem("secret_key")
+      }
+    });
 
     setStudents(response.data);
     setIsLoading(false);
@@ -71,7 +81,6 @@ export default function ListStudents() {
   };
 
   return (
-    <>
       <div className={styles.container}>
         <header className={styles.header}>
           <div onClick={handleLogout} >
@@ -109,7 +118,7 @@ export default function ListStudents() {
                       <p>
                         <strong>{item.name}</strong>
                       </p>
-                      <p>{item.school.name}</p>
+                      <p>{item.school?.name}</p>
                       <p>
                         {item.description}
                       </p>
@@ -121,6 +130,6 @@ export default function ListStudents() {
           </>
         )}
       </div>
-    </>
+    
   );
 }
