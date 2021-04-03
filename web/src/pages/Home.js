@@ -13,7 +13,14 @@ import { useEffect } from "react";
 
 export default function Home() {
   const { height } = useWindowDimensions();
-
+ useEffect(() => {
+   if(localStorage.getItem('donor_id')){
+     navigate('/listStudents')
+   }
+   else if(localStorage.getItem('parent_id')){
+     navigate('/listChildrens')
+   }
+  },[])
 
   return (
     <>
