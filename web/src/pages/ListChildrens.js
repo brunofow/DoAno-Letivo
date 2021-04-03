@@ -1,12 +1,9 @@
 import styles from "../styles/pages/ListChildrens.module.css";
 import api from '../services/api';
 import { FiX, FiPlus } from "react-icons/fi";
-import { HiOutlinePencil, HiPencil } from 'react-icons/hi';
 import { useEffect, useState } from "react";
 import { navigate } from '@reach/router';
 import Spinner from "../components/Spinner";
-
-
 
 export default function ListChildrens() {
   const [ isPencilHovered, setIsPencilHovered ] = useState(false);
@@ -62,12 +59,6 @@ export default function ListChildrens() {
           <p>Escola Municipal Degrau do Saber</p>
           <p>{item.description}</p>
           </article>
-          <div className={styles.edit}
-            onMouseEnter={() => setIsPencilHovered(true)}
-            onMouseLeave={() => setIsPencilHovered(false)}
-          >
-            { isPencilHovered ? <HiPencil size={32} /> : <HiOutlinePencil size={30} />}
-          </div>
         </div>
         ))}
       </div>

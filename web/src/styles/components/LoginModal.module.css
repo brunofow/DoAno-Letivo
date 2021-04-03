@@ -36,7 +36,23 @@
   .modal > svg:hover {
     filter: brightness(.9);
   }
+
+  .modal .form button {
+    margin-bottom: 1rem;
+  }
+
+  .modal .form {
+    text-align: center;
+  }
+
+  .modal .form a {
+    cursor: pointer;
+  }
   
+  .modal .form a:hover {
+    text-decoration: underline;
+  }
+
 @media (max-width: 768px) {
   .modal {
     width: 90%;

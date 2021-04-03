@@ -1,14 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IntlProvider, FormattedNumber } from "react-intl";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FcCheckmark } from "react-icons/fc";
 import Button from "./Button";
 import styles from "../styles/components/Carousel.module.css";
+import { FormContext } from '../contexts/FormContext';
 
 export default function CarouselComponent({ data, price }) {
+  const { setIsRegisterModalOpen, setActualKit } = useContext(FormContext);
   const [previousItem, setPreviousItem] = useState(null);
   const [currentItem, setCurrentItem] = useState(0);
+
+  function handleOpenRegisterModal(kit) {
+    window.scrollTo(0, 0);
+    setIsRegisterModalOpen(true);
+    setActualKit(kit);
+  }
 
   useEffect(() => {
     const elements = document.querySelectorAll(
@@ -104,7 +112,7 @@ export default function CarouselComponent({ data, price }) {
               ))}
             </ul>
             <a>
-              <Button>Escolher kit</Button>
+              <Button onClick={() => handleOpenRegisterModal(item)} >Escolher kit</Button>
             </a>
           </div>
         ))}

@@ -5,6 +5,10 @@ import styles from "../styles/components/SuccessfulRegister.module.css";
 
 export default function SuccessfulRegister({ setIsModalOpen }) {
 
+  function handleRegisterAgain() {
+    setIsModalOpen(false);
+  }
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
@@ -13,10 +17,8 @@ export default function SuccessfulRegister({ setIsModalOpen }) {
         </div>
         <p>Filho(a) cadastrado com sucesso!</p>
         <p>Deseja cadastrar mais um filho?</p>
-
-        <Link to="/registerStudent">
-          <Button>Cadastrar</Button>
-        </Link>
+        
+          <Button onClick={handleRegisterAgain}>Cadastrar</Button>
         <Link to="/listChildrens">
           <Button >Voltar</Button>
         </Link>

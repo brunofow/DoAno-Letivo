@@ -19,7 +19,7 @@ function RegisterStudent(props) {
   const [kits, setKits] = useState([]);
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   useEffect(() => {
     if (!localStorage.getItem("parent_id")) {

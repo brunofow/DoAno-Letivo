@@ -11,7 +11,7 @@ import { FiChevronLeft } from "react-icons/fi";
 import { FormContext } from "../contexts/FormContext";
 export default function LoginModal({ setIsModalOpen, donor }) {
   const [isLoading, setIsLoading] = useState(false);
-  const { setIsLoginModalOpen } = useContext(FormContext);
+  const { setIsLoginModalOpen, setIsRegisterModalOpen } = useContext(FormContext);
 
   const formRef = useRef(null);
 
@@ -63,16 +63,22 @@ export default function LoginModal({ setIsModalOpen, donor }) {
     setIsLoading(false);
   }
 
+  function dontHaveRegister() {
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(true);
+  }
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <FiChevronLeft onClick={() => setIsLoginModalOpen(false)} size={40} />
+        { !isLoading && <FiChevronLeft onClick={() => setIsLoginModalOpen(false)} size={40} />}
         <Form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
           <Input type="email" name="email" placeholder={"E-mail"} />
           <Input type="password" name="password" placeholder="Senha"></Input>
           <Button type="submit">
             {isLoading ? <Spinner size={40} /> : "Entrar"}
           </Button>
+          { !isLoading && <a onClick={dontHaveRegister} >Não possui cadastro? Clique aqui</a>}
         </Form>
       </div>
     </div>

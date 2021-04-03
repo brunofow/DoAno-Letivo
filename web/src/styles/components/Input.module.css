@@ -47,3 +47,10 @@
   width: 25rem;
   color: #E83F5B; 
 }
+
+.inputBox svg {
+  position: absolute;
+  right: .8rem;
+  top: .6rem;
+  cursor: pointer;
+}

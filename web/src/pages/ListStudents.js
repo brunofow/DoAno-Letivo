@@ -9,9 +9,24 @@ import useWindowDimensions from '../hooks/useWindowDimension';
 
 export default function ListStudents() {
   const [students, setStudents] = useState([]);
-  const [schools, setSchools] = useState([]);
+  const [kits, setKits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [ selected, setSelected ] = useState(null);
   const { width } = useWindowDimensions();
+
+  async function handleSelect(data) {
+    setIsLoading(true);
+    setSelected(data);
+    const response = await api.get(`/students/kit/${data.value}`, {
+      headers: {
+        Authorization: localStorage.getItem("secret_key")
+      }
+    });
+
+    console.log(response.data);
+    setStudents(response.data);
+    setIsLoading(false);
+  }
 
   useEffect(() => {
     console.log(width)
@@ -40,25 +55,30 @@ export default function ListStudents() {
   }
    
 
-  async function loadSchools() {
-    const response = await api.get("/schools");
+  async function loadKits() {
+    const response = await api.get("/kits");
 
     console.log(response.data);
 
     const options = response.data.map((item) => {
       return {
         value: item.id,
-        label: item.name,
+        label: item.title,
       };
     });
 
-    setSchools(options);
+    setKits(options);
   }
 
   useEffect(() => {
     loadStudents();
-    loadSchools();
+    loadKits();
   }, []);
+
+  function handleCancelFilter() { 
+    setSelected(null);
+    loadStudents();
+  }
 
   function handlePay(item) {
     navigate('/finishPayment', { state: { item }})
@@ -88,11 +108,15 @@ export default function ListStudents() {
           </div>
           <h1>DoAno Letivo</h1>
           <Select
+            value={selected}
+            onChange={handleSelect}
             className={styles.select}
             styles={customStyles}
             placeholder=" "
-            options={schools}
-          />
+            options={kits}
+          >
+          </Select>
+          {selected && <FiX onClick={handleCancelFilter} size={25} /> }
         </header>
         {isLoading ? (
           <Spinner size={50} color="#1E212B" />

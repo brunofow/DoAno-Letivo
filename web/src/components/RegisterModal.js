@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { navigate } from "@reach/router";
 import styles from "../styles/components/RegisterModal.module.css";
 import { Form } from "@unform/web";
@@ -12,8 +12,21 @@ import Spinner from "./Spinner";
 
 export default function RegisterModal({ donor }) {
   const [isLoading, setIsLoading] = useState(false);
-  const { setIsRegisterModalOpen } = useContext(FormContext);
+  const { setIsRegisterModalOpen, setIsLoginModalOpen, actualKit, actualEmail } = useContext(FormContext);
+  
   const formRef = useRef(null);
+
+  useEffect(() => {
+    if(actualEmail) {
+      formRef.current.setData({
+        email: actualEmail,
+        name: '',
+        emittingOrgan: '',
+        password: '',
+        confirmPassword: ''
+      })
+    }
+  }, [])
 
   async function handleSubmit(data, { reset }) {
     if (isLoading) return;
@@ -48,7 +61,7 @@ export default function RegisterModal({ donor }) {
             ? localStorage.setItem("donor_id", user_id)
             : localStorage.setItem("parent_id", user_id);
         }
-        donor ? navigate("/listStudents") : navigate("/registerStudent");
+        donor ? navigate("/listStudents", { state: { actualKit }}) : navigate("/registerStudent");
         setIsRegisterModalOpen(false);
       } else {
         alert(response.data.error);
@@ -70,16 +83,20 @@ export default function RegisterModal({ donor }) {
     setIsLoading(false);
   }
 
+  function haveLogin() {
+    setIsRegisterModalOpen(false);
+    setIsLoginModalOpen(true);
+  }
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <FiChevronLeft
+        { !isLoading && <FiChevronLeft
           onClick={() => setIsRegisterModalOpen(false)}
           size={40}
-        />
+        />}
         <Form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
           <Input
-            
             name="name"
             placeholder={donor ? "Nome" : "Nome do responsável"}
           />
@@ -100,9 +117,12 @@ export default function RegisterModal({ donor }) {
             placeholder="Confirme sua senha"
           />
 
+          <div className={styles.buttonContainer} >
           <Button type="submit">
             {isLoading ? <Spinner size={40} /> : "Cadastrar"}
           </Button>
+          { !isLoading && <a onClick={haveLogin}>Já possui cadastro? Clique aqui</a>}
+          </div>
         </Form>
       </div>
     </div>

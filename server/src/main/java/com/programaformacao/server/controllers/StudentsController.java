@@ -52,7 +52,11 @@ public class StudentsController {
 			Parent parent = parentRepository.findById(parent_id)
 							.orElse(null);
 			return ResponseEntity.ok(parent.getStudents());
+	}
 
+	@GetMapping("/kit/{kit_id}")
+	public ResponseEntity<?> getChildrensByKit(@PathVariable Long kit_id) {
+		return ResponseEntity.ok(repository.findByKitAndDonated(kit_id));
 	}
 	
 	@PostMapping("/{id}")
