@@ -71,7 +71,7 @@ public class AuthenticationController {
       Parent parent = new Parent();
       String hashedPassword = passwordEncoder().encode(registerForm.getPassword());
       if(dbParent != null) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+        return ResponseEntity.ok(errorResponse);
       } else {
         parent.setEmail(registerForm.getEmail());
         parent.setPassword(hashedPassword);
@@ -85,7 +85,7 @@ public class AuthenticationController {
       Donor donor = new Donor();
       String hashedPassword = passwordEncoder().encode(registerForm.getPassword());
       if(dbDonor != null) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+        return ResponseEntity.ok(errorResponse);
       } else {
         donor.setEmail(registerForm.getEmail());
         donor.setPassword(hashedPassword);

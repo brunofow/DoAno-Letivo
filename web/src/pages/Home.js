@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <>
-      <Header pageTitle="Como doar" />
+      <Header pageTitle="Escolha seu perfil" home />
       <div className={styles.container}>
         <div className={styles.stripe}></div>
         <div className={styles.firstSection} style={{ height }}>

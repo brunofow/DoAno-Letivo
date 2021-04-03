@@ -50,6 +50,8 @@ export default function RegisterModal({ donor }) {
         }
         donor ? navigate("/listStudents") : navigate("/registerStudent");
         setIsRegisterModalOpen(false);
+      } else {
+        alert(response.data.error);
       }
     } catch (error) {
       const validationErrors = {};
