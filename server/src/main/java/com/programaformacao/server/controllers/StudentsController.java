@@ -55,7 +55,6 @@ public class StudentsController {
 
 	}
 	
-	
 	@PostMapping("/{id}")
 	public ResponseEntity<?> post (@ModelAttribute StudentForm form, @PathVariable Long id, @RequestParam("avatar") MultipartFile file){
 		Students student = new Students();

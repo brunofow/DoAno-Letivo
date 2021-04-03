@@ -1,10 +1,6 @@
 package com.programaformacao.server.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,10 +25,10 @@ public class Donation {
     @JoinColumn(name = "donor_id")
     private Donor donor;
     
-    @JsonIgnore
-    @ManyToMany(mappedBy = "donation")
-    private List<Students> student = new ArrayList<>();
     
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Students student;
     
 
 	public Donor getDonor() {
@@ -59,12 +55,11 @@ public class Donation {
         this.description = description;
     }
 
-    
-	public List<Students> getStudent() {
+	public Students getStudent() {
 		return student;
 	}
 
-	public void setStudent(List<Students> student) {
+	public void setStudent(Students student) {
 		this.student = student;
 	}
 

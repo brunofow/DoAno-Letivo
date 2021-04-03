@@ -11,10 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -52,10 +55,8 @@ public class Students {
 	@Column(columnDefinition = "boolean default false")
 	private boolean donated;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "students_donation", joinColumns = @JoinColumn(
-			name = "students_id"), inverseJoinColumns = @JoinColumn(name = "donation_id") )
-	private List<Donation> donation = new ArrayList<>();
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+  	private List<Donation> donation = new ArrayList<>();
 	
 	public Long getId() {
 		return id;
@@ -121,17 +122,22 @@ public class Students {
 		this.parent = parent;
 	}
 
-	public Boolean getDonated() {
+	public boolean getDonated() {
 		return donated;
 	}
 
-	public void setDonated(Boolean donated) {
+	public void setDonated(boolean donated) {
 		this.donated = donated;
 	}
 
 	public List<Donation> getDonation() {
 		return donation;
 	}
+
+	public void setDonation(List<Donation> donation) {
+		this.donation = donation;
+	}
+	
 
 	@Override
 	public int hashCode() {
