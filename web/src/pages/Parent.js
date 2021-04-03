@@ -7,16 +7,26 @@ import { FiChevronsDown } from "react-icons/fi";
 import api from "../services/api";
 import styles from "../styles/pages/Parent.module.css";
 
+
 import logo from "../styles/images/Mask Group.svg";
 import useWindowDimensions from "../hooks/useWindowDimension";
 import { FormContext } from "../contexts/FormContext";
+import { navigate } from "@reach/router";
 
 export default function Parent() {
   const { setIsRegisterModalOpen, setIsLoginModalOpen, setDonor } = useContext(FormContext);
   const { height } = useWindowDimensions();
   const [kits, setKits] = useState([]);
 
-  
+  useEffect(() => {
+    if(localStorage.getItem('donor_id')){
+      navigate('/listStudents')
+    }
+    else if(localStorage.getItem('parent_id')){
+      navigate('/listChildrens')
+    }
+   },[])
+ 
 
   useEffect(() => {
     window.scrollTo(0, 0);

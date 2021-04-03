@@ -15,6 +15,14 @@ export default function Donor() {
   const { setIsLoginModalOpen, setIsRegisterModalOpen, setDonor } = useContext(FormContext);
   const { height } = useWindowDimensions();
   const [ kits, setKits ] = useState([]);
+  useEffect(() => {
+    if(localStorage.getItem('donor_id')){
+      navigate('/listStudents')
+    }
+    else if(localStorage.getItem('parent_id')){
+      navigate('/listChildrens')
+    }
+   },[])
  
 
   useEffect(() => {
