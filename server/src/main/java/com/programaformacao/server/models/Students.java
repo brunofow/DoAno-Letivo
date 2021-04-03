@@ -1,11 +1,22 @@
 package com.programaformacao.server.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Students {
@@ -37,7 +48,15 @@ public class Students {
 	@ManyToOne
 	@JoinColumn(name = "parent_id")
 	private Parent parent;
-
+	
+	@Column(columnDefinition = "boolean default false")
+	private boolean donated;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "students_donation", joinColumns = @JoinColumn(
+			name = "students_id"), inverseJoinColumns = @JoinColumn(name = "donation_id") )
+	private List<Donation> donation = new ArrayList<>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -100,6 +119,18 @@ public class Students {
 
 	public void setParent(Parent parent) {
 		this.parent = parent;
+	}
+
+	public Boolean getDonated() {
+		return donated;
+	}
+
+	public void setDonated(Boolean donated) {
+		this.donated = donated;
+	}
+
+	public List<Donation> getDonation() {
+		return donation;
 	}
 
 	@Override

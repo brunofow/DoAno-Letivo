@@ -11,6 +11,10 @@ public class StudentForm {
   private String description;
 
   private Integer enrollment;
+  
+  
+  
+  
 
   public String getName() {
     return name;
