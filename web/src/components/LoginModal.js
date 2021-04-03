@@ -16,7 +16,7 @@ export default function LoginModal({ setIsModalOpen, donor }) {
   const formRef = useRef(null);
 
   async function handleSubmit(data, { reset }) {
-    if (isLoading) return;
+    if(isLoading) return;
 
     setIsLoading(true);
     const sendData = {
@@ -38,17 +38,16 @@ export default function LoginModal({ setIsModalOpen, donor }) {
       const response = await api.post("/login", sendData);
 
       if (response.data.user_id) {
-        const user_id = response.data.user_id;
-        {
-          donor
-            ? localStorage.setItem("donor_id", user_id)
-            : localStorage.setItem("parent_id", user_id);
-        }
-        donor ? navigate("/listStudents") : navigate("/listChildrens");
-        reset();
-        setIsLoginModalOpen(false);
-        
-      }
+      
+      const user_id = response.data.user_id;
+      {donor ? localStorage.setItem("donor_id", user_id) : localStorage.setItem("parent_id", user_id)}
+      { localStorage.setItem("secret_key", response.data.secret_key)}
+      donor ? navigate("/listStudents") : navigate("/listChildrens");
+      reset();
+      setIsLoginModalOpen(false);
+    } else {
+      alert(response.data.error);
+    }
     } catch (error) {
       const validationErrors = {};
 
@@ -61,7 +60,6 @@ export default function LoginModal({ setIsModalOpen, donor }) {
       formRef.current.setErrors(validationErrors);
       console.log(validationErrors);
     }
-
     setIsLoading(false);
   }
 

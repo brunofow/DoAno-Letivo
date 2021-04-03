@@ -28,7 +28,12 @@ function RegisterStudent(props) {
   }, []);
 
   async function loadOptions() {
-    const schoolResponse = await api.get("/schools");
+    const secret = localStorage.getItem("secret_key");
+    const schoolResponse = await api.get("/schools", {
+      headers: {
+        Authorization: secret
+      }
+    });
     const kitResponse = await api.get("/kits");
 
     const schoolOptions = schoolResponse.data.map((item) => {
@@ -80,10 +85,11 @@ function RegisterStudent(props) {
       })
 
       const response = await api.post(`/students/${parent_id}`, formData, {
-        headers: {
-          "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-        },
-      });
+      headers: {
+        "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+        Authorization: localStorage.getItem("secret_key")
+      },
+    });
   
       setIsLoading(false);
       reset();

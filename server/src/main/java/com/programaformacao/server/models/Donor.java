@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -28,6 +29,8 @@ public class Donor{
   private String password;
   @NotNull
   private String email;
+
+  
   @NotNull
   @OneToMany(mappedBy = "donor")
   private List<Donation> donations = new ArrayList<>();
