@@ -30,8 +30,8 @@ export default function LoginModal({ setIsModalOpen, donor }) {
       donor ? navigate("/listStudents") : navigate("/listChildrens");
       reset();
       setIsLoginModalOpen(false);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }
   return (
     <div className={styles.overlay}>

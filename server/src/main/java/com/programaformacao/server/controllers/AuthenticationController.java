@@ -32,28 +32,30 @@ public class AuthenticationController {
   }
 
   private String loginResponse(Long id) {
-    return "{\"user_id\": " + id + "}";
+    return "{\"user_id\": " + id + "," +
+            "\"secret_key\": \"afe0f5c413464d07d92d4601b348525d\"}";
   }
 
   @PostMapping( value = "/login", produces = MediaType.APPLICATION_JSON_VALUE )
   public ResponseEntity<?> login(@RequestBody LoginForm loginForm) {
-    String errorResponse = "{\"error:\" \"Email ou senha incorretos\"}";
+    String errorResponse = "{\"error\":  \"Senha incorreta\"}";
+    String emailError = "{\"error\": \"Email não cadastrado\"}";
 
     if(loginForm.getAccountType().equals("parent")) {
       Parent dbParent = parentRepository.findByEmail(loginForm.getEmail());
-      if(dbParent == null) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+      if(dbParent == null) return ResponseEntity.ok(emailError);
       if(passwordEncoder().matches(loginForm.getPassword(), dbParent.getPassword())) {
         return ResponseEntity.ok(loginResponse(dbParent.getId()));
       } else {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+        return ResponseEntity.ok(errorResponse);
       }
     } else {
       Donor dbDonor = donorRepository.findByEmail(loginForm.getEmail());
-      if(dbDonor == null) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+      if(dbDonor == null) return ResponseEntity.ok(emailError);
       if(passwordEncoder().matches(loginForm.getPassword(), dbDonor.getPassword())) {
         return ResponseEntity.ok(loginResponse(dbDonor.getId()));
       } else {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+        return ResponseEntity.ok(errorResponse);
       }
     }
   }
