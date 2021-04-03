@@ -1,0 +1,10 @@
+.selectBox {
+  position: relative;
+}
+
+.selectBox span {
+  position: absolute;
+  bottom: -1.5rem;
+  width: 25rem;
+  color: #E83F5B; 
+}

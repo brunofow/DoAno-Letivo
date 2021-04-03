@@ -46,6 +46,7 @@ export default function Select({ name, ...rest }) {
   }, [fieldName, registerField, rest.isMulti]);
 
   return (
+    <div className={styles.selectBox} style={{ marginBottom: error && '3rem'}}>
     <ReactSelect
       styles={customStyles}
       defaultValue={defaultValue}
@@ -53,5 +54,7 @@ export default function Select({ name, ...rest }) {
       classNamePrefix="react-select"
       {...rest}
     />
+    { error && <span>{error}</span>}
+    </div>
   );
 };

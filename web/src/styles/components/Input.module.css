@@ -41,10 +41,9 @@
   display: none;
 }
 
-.inputBox span {
+.inputBox p {
   position: absolute;
   bottom: -1.5rem;
   width: 25rem;
-  color: #E83F5B;
-  
+  color: #E83F5B; 
 }

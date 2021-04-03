@@ -3,6 +3,7 @@ import { navigate } from "@reach/router";
 import styles from "../styles/pages/RegisterStudent.module.css";
 import api from "../services/api";
 import { Form } from "@unform/web";
+import * as Yup from 'yup';
 import SuccessfulRegister from "../components/SuccessfulRegister";
 import Spinner from "../components/Spinner";
 import Select from "../components/Select";
@@ -69,16 +70,43 @@ function RegisterStudent(props) {
 
     const parent_id = localStorage.getItem("parent_id");
 
-    const response = await api.post(`/students/${parent_id}`, formData, {
+    try {
+      formRef.current.setErrors({});
+
+      const schema = Yup.object().shape({
+        name: Yup.string().min(4, "Deve ter 4 caracteres no mínimo").required("Nome é obrigatório"),
+        kit_id: Yup.string().ensure().required("É necessário informar  o kit"),
+        school_id: Yup.string().ensure().required("É necessário informar a escola"),
+        enrollment: Yup.number().required().typeError("É necessário informar o número da matrícula")
+      })
+
+      await schema.validate(data, {
+        abortEarly: false
+      })
+
+      const response = await api.post(`/students/${parent_id}`, formData, {
       headers: {
         "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
         Authorization: localStorage.getItem("secret_key")
       },
     });
+  
+      setIsLoading(false);
+      reset();
+      setIsModalOpen(true);
+    } catch (error) {
+      const validationErrors = {};
+
+      if (error instanceof Yup.ValidationError) {
+        error.inner.forEach((err) => {
+          validationErrors[err.path] = err.message;
+        });
+      }
+
+      formRef.current.setErrors(validationErrors);
+    }
 
     setIsLoading(false);
-    reset();
-    setIsModalOpen(true);
   };
 
   return (
@@ -91,7 +119,7 @@ function RegisterStudent(props) {
         <div className={styles.formContainer}>
           <h3>Cadastre seu filho</h3>
           <div className={styles.form}>
-            <Form ref={formRef} onSubmit={handleSubmit}>
+            <Form className={styles.formComponent} ref={formRef} onSubmit={handleSubmit}>
               <ImageInput name="avatar" />
               <Input name="name" placeholder="Nome completo da criança" />
               <Select
