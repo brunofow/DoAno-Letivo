@@ -61,7 +61,7 @@ export default function Donor() {
       <div className={styles.steps}>
         <div>
           <h2>Primeiramente</h2>
-          <span>Você pode efetuar seu cadastro, mas não se preocupe, não é obrigatório.</span>
+          <span>Você pode efetuar seu cadastro</span>
         </div>
         <div>
           <h2>Logo em seguida</h2>

@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 import { FormContext } from '../contexts/FormContext';
 import styles from '../styles/components/Header.module.css';
 
-export default function Header({ pageTitle, donor }) {
+export default function Header({ pageTitle, donor, home }) {
   const { setIsLoginModalOpen, setIsRegisterModalOpen, setDonor } = useContext(FormContext);
 
   useEffect(() => { 
@@ -26,18 +26,18 @@ export default function Header({ pageTitle, donor }) {
         </a>
         </div>
 
-        <span >
-          |
-        </span>
+        { !home && <span >|</span>}
 
-        <div className={styles.accountButtons}>
-        <a onClick={() => setIsRegisterModalOpen(true)} >
-          Cadastrar
-        </a>
-        <a onClick={() => setIsLoginModalOpen(true)}>
-          Entrar
-        </a>
-        </div>
+        { !home && (
+          <div className={styles.accountButtons}>
+          <a onClick={() => setIsRegisterModalOpen(true)} >
+            Cadastrar
+          </a>
+          <a onClick={() => setIsLoginModalOpen(true)}>
+            Entrar
+          </a>
+          </div>
+        )}
       </div>
     </header>
   )

@@ -56,7 +56,7 @@ export default function FinishPayment(props){
          
             </div>
         </div>
-        {isPaymentModalOpen && <Payment setIsPaymentModalOpen={setIsPaymentModalOpen} setSuccessfulPaymentOpen={setSuccessfulPaymentOpen} qrCode={isQrCode} />}
+        {isPaymentModalOpen && <Payment student={student} setIsPaymentModalOpen={setIsPaymentModalOpen} setSuccessfulPaymentOpen={setSuccessfulPaymentOpen} qrCode={isQrCode} />}
         { isSuccessfulPaymentOpen && <SuccessfulPayment />}
        </>
     )

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from '../services/api';
 import QRCode from "react-qr-code";
 import styles from "../styles/components/Payment.module.css";
 
@@ -6,14 +7,24 @@ export default function Payment({
   qrCode,
   setIsPaymentModalOpen,
   setSuccessfulPaymentOpen,
+  student
 }) {
   const [hasPaid, setHasPaid] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const donor_id = localStorage.getItem("donor_id");
+    api.post(`/donations/${donor_id}`, {
+      description: student.kit.title,
+      student
+    }, {
+      headers: {
+        Authorization: localStorage.getItem("secret_key")
+      }
+    })
+    .then(setTimeout(() => {
       setHasPaid(true);
       finishPayment();
-    }, 4000);
+    }, 2000))
   }, []);
 
   function finishPayment() {

@@ -52,6 +52,7 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/login").permitAll()
             .antMatchers("/register").permitAll()
             .antMatchers("/kits").permitAll()
+            .antMatchers("/files/**").permitAll()
             .anyRequest().authenticated();
   }
 
