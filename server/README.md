@@ -7,7 +7,7 @@
 #
 
 # 💻 Executando o projeto
-Para executar uma aplicação React.Js, você vai precisar do [Java][java] instalado na sua máquina.
+Para executar uma aplicação java, você vai precisar do [Java][java] instalado na sua máquina.
 
 ### Baixando o repositório
 
