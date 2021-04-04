@@ -18,12 +18,12 @@ export default function Header({ pageTitle, donor, home }) {
 
       <div>
         <div className={styles.detailButtons}>
-        <a href="#steps" >
+        { home ? <a href="#choose">Escolha seu perfil</a> : <a href="#steps" >
           {pageTitle}
-        </a>
-        <a href="#kits">
+        </a>}
+        { home ? <a href="#projeto" >O projeto</a> : <a href="#kits">
           Escolha um kit
-        </a>
+        </a>}
         </div>
 
         { !home && <span >|</span>}

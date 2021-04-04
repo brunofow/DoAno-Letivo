@@ -61,7 +61,7 @@ export default function RegisterModal({ donor }) {
             ? localStorage.setItem("donor_id", user_id)
             : localStorage.setItem("parent_id", user_id);
         }
-        donor ? navigate("/listStudents", { state: { actualKit }}) : navigate("/registerStudent");
+        donor ? navigate("/estudantes", { state: { actualKit }}) : navigate("/cadastrarEstudante");
         setIsRegisterModalOpen(false);
       } else {
         alert(response.data.error);

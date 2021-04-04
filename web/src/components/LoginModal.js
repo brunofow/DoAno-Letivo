@@ -42,7 +42,7 @@ export default function LoginModal({ setIsModalOpen, donor }) {
       const user_id = response.data.user_id;
       {donor ? localStorage.setItem("donor_id", user_id) : localStorage.setItem("parent_id", user_id)}
       { localStorage.setItem("secret_key", response.data.secret_key)}
-      donor ? navigate("/listStudents") : navigate("/listChildrens");
+      donor ? navigate("/estudantes") : navigate("/filhos");
       reset();
       setIsLoginModalOpen(false);
     } else {

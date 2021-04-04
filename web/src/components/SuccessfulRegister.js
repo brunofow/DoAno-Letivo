@@ -19,7 +19,7 @@ export default function SuccessfulRegister({ setIsModalOpen }) {
         <p>Deseja cadastrar mais um filho?</p>
         
           <Button onClick={handleRegisterAgain}>Cadastrar</Button>
-        <Link to="/listChildrens">
+        <Link to="/filhos">
           <Button >Voltar</Button>
         </Link>
       </div>

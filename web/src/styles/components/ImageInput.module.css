@@ -85,6 +85,12 @@
   width: 60px;
 }
 
+.inputBox span {
+  position: absolute;
+  bottom: -.5rem;
+  color: #E83F5B;
+}
+
 @media (max-width: 768px) {
   .inputBox label img {
     display: block;

@@ -44,6 +44,7 @@ export default function Select({ name, ...rest }) {
       },
       clearValue: ref => {
         ref.current.value = ''
+        ref.select.clearValue()
       },
     });
   }, [fieldName, registerField, rest.isMulti]);

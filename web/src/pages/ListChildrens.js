@@ -12,7 +12,7 @@ export default function ListChildrens() {
 
    useEffect(() => {
     if(!localStorage.getItem("parent_id")){
-      navigate('/parent')
+      navigate('/familia')
     }
   }, [])
 
@@ -20,7 +20,7 @@ export default function ListChildrens() {
     setIsLoading(true);
     const parent_id = localStorage.getItem("parent_id");
     const secret = localStorage.getItem("secret_key");
-    const response = await api.get(`/students/parent/${parent_id}`, {
+    const response = await api.get(`/students/familia/${parent_id}`, {
       headers: {
         Authorization: secret
       }
@@ -37,7 +37,7 @@ export default function ListChildrens() {
 
   function handleLogout() {
     localStorage.removeItem("parent_id");
-    navigate("/parent");
+    navigate("/familia");
   }
 
   return (
@@ -65,7 +65,7 @@ export default function ListChildrens() {
 
         </>
       )}
-      <button onClick={() => navigate("/registerStudent", { state: { registered: true }})} >
+      <button onClick={() => navigate("/cadastrarEstudante", { state: { registered: true }})} >
         <FiPlus size={40} />
       </button>
     </div>

@@ -15,13 +15,12 @@ export default function Routes() {
   return (
     <Router>
       <Home path="/" />
-      <Donor path="/donor" />
-      <Parent path="/parent" />
-      <ListStudents path="/listStudents"/>
-      <RegisterStudent path="/registerStudent" />
-      <ListChildrens path="/listChildrens" />
-      <FinishPayment path="/finishPayment" />
-      <Payment path="/payment"/>
+      <Donor path="/doador" />
+      <Parent path="/familia" />
+      <ListStudents path="/estudantes"/>
+      <RegisterStudent path="/cadastrarEstudante" />
+      <ListChildrens path="/filhos" />
+      <FinishPayment path="/finalizarPagamento" />
       <NotFound default/>
     </Router>
   )

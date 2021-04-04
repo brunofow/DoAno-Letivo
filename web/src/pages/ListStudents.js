@@ -34,13 +34,13 @@ export default function ListStudents() {
 
   useEffect(() => {
     if(!localStorage.getItem("donor_id")){
-      navigate('/donor');
+      navigate('/doador');
     }  
     }, [])
   
   function handleLogout() {
     localStorage.removeItem("donor_id");
-    navigate("/donor");
+    navigate("/doador");
   }
   async function loadStudents() {
     setIsLoading(true);
@@ -81,7 +81,7 @@ export default function ListStudents() {
   }
 
   function handlePay(item) {
-    navigate('/finishPayment', { state: { item }})
+    navigate('/finalizarPagamento', { state: { item }})
   }
 
   const customStyles = {
@@ -128,7 +128,7 @@ export default function ListStudents() {
               </h1>
             ) : (
               <div className={styles.list}>
-                {students.map((item) => (
+                {students?.map((item) => (
                   <div
                     onClick={() => handlePay(item)}
                     key={item.id}

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { FormContext } from '../contexts/FormContext';
 import styles from '../styles/components/Footer.module.css';
 
-export default function Footer() {
+export default function Footer({ home }) {
   const { setIsRegisterModalOpen, setActualEmail } = useContext(FormContext);
   const [ emailValue, setEmailValue ] = useState('');
 
@@ -36,10 +36,10 @@ export default function Footer() {
         </section>
       </div>
 
-      <div>
+     { !home &&  <div>
         <input value={emailValue} onChange={(event) => setEmailValue(event.target.value)} placeholder="Insira seu e-mail" type="email"/>
         <button onClick={handleRegister} >CADASTRAR</button>
-      </div>
+      </div>}
     </footer>
   )
 }

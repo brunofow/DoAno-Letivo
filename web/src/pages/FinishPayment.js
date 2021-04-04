@@ -30,7 +30,7 @@ export default function FinishPayment(props){
        <>
         <div className={styles.container}>
             <div className={styles.paymentContainer}>
-            <FiChevronLeft onClick={() => navigate('/listStudents')} size={40} />
+            <FiChevronLeft onClick={() => navigate('/estudantes')} size={40} />
             <div className={styles.studentDetails} >   
                 <img src={`http://localhost:8080/files/${student?.avatar}`} alt="Estudante" /> 
               <p>{student?.kit.title}</p>

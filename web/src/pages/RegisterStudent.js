@@ -19,11 +19,11 @@ function RegisterStudent(props) {
   const [kits, setKits] = useState([]);
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("parent_id")) {
-      navigate("/parent");
+      navigate("/familia");
     }
   }, []);
 
@@ -74,6 +74,7 @@ function RegisterStudent(props) {
       formRef.current.setErrors({});
 
       const schema = Yup.object().shape({
+        avatar: Yup.mixed().required("É necessário enviar uma foto"),
         name: Yup.string().min(4, "Deve ter 4 caracteres no mínimo").required("Nome é obrigatório"),
         kit_id: Yup.string().ensure().required("É necessário informar  o kit"),
         school_id: Yup.string().ensure().required("É necessário informar a escola"),
@@ -92,8 +93,13 @@ function RegisterStudent(props) {
     });
   
       setIsLoading(false);
-      reset();
       setIsModalOpen(true);
+      const select_kit = formRef.current?.getFieldRef('kit_id');
+      const select_school = formRef.current?.getFieldRef('school_id');
+      select_kit.select.clearValue();
+      select_school.select.clearValue();
+      setDescription("");
+      reset();
     } catch (error) {
       const validationErrors = {};
 

@@ -63,12 +63,13 @@ const ImageInput = ({name, placeholder, ...rest}) => {
   return (
     <>
       
-      <div className={styles.inputBox}>
+      <div className={styles.inputBox} style={{ marginBottom: error && '3rem'}}>
       <div onClick={pickNewImage} className={styles.preview}>{preview && <img src={preview} alt="Preview" width="100" />}</div>
         <input id={name} type="file" ref={inputRef} onChange={handlePreview} accept="image/x-png,image/gif,image/jpeg" {...rest} />
         <label htmlFor={name}>
           <img src={uploadIcon} alt="Upload" />
         </label>
+        { error && <span>{error}</span>}
       </div>
       
     </>

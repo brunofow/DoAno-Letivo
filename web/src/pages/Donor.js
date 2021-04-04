@@ -17,10 +17,10 @@ export default function Donor() {
   const [ kits, setKits ] = useState([]);
   useEffect(() => {
     if(localStorage.getItem('donor_id')){
-      navigate('/listStudents')
+      navigate('/estudantes')
     }
     else if(localStorage.getItem('parent_id')){
-      navigate('/listChildrens')
+      navigate('/filhos')
     }
    },[])
  

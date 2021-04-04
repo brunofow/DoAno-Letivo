@@ -127,11 +127,15 @@
   width: 45%; 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 970px) {
   .detailsContainer img {
     display: none;
   }
 
+}
+
+@media (max-width: 768px) {
+  
   .detailsContainer {
     display: flex;
     flex-direction: column;

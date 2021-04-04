@@ -20,10 +20,10 @@ export default function Parent() {
 
   useEffect(() => {
     if(localStorage.getItem('donor_id')){
-      navigate('/listStudents')
+      navigate('/estudantes')
     }
     else if(localStorage.getItem('parent_id')){
-      navigate('/listChildrens')
+      navigate('/filhos')
     }
    },[])
  
@@ -86,7 +86,7 @@ export default function Parent() {
           </div>
         </div>
         <div className={styles.kitSection}>
-          <h2>Escolha o kit para seu filho</h2>
+          <h2 id="kits" >Escolha o kit para seu filho</h2>
           <p>
             Confira o que contém cada kit e se ele está de acordo com o ano em
             que seu filho está matriculado

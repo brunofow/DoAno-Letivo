@@ -15,16 +15,16 @@ export default function Home() {
   const { height } = useWindowDimensions();
  useEffect(() => {
    if(localStorage.getItem('donor_id')){
-     navigate('/listStudents')
+     navigate('/estudantes')
    }
    else if(localStorage.getItem('parent_id')){
-     navigate('/listChildrens')
+     navigate('/filhos')
    }
   },[])
 
   return (
     <>
-      <Header pageTitle="Escolha seu perfil" home />
+      <Header home />
       <div className={styles.container}>
         <div className={styles.stripe}></div>
         <div className={styles.firstSection} style={{ height }}>
@@ -52,7 +52,7 @@ export default function Home() {
         </div>
 
         <div className={styles.profiles}>
-          <Link to="/parent">
+          <Link to="/familia">
             <section>
               <h4>Famílias</h4>
               <img src={family} alt="Família" />
@@ -62,20 +62,20 @@ export default function Home() {
               </span>
             </section>
           </Link>
-          <Link to="/donor">
+          <Link to="/doador">
             <section>
               <h4>Doadores</h4>
               <img src={hand} alt="Mão segurando coração" />
               <span>
                 Se você quer saber como fazer uma doação <br />
-                <Link to="/donor">clique aqui</Link>
+                clique aqui
               </span>
             </section>
           </Link>
         </div>
 
         <div className={styles.about}>
-          <h1>Por que este projeto é importante?</h1>
+          <h1 id="projeto" >Por que este projeto é importante?</h1>
           <p>
             Confira as informações que tem relevância no cenário social das
             crianças que realmente precisam de material escolar
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer home />
     </>
   );
 }

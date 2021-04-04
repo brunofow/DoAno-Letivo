@@ -23,7 +23,7 @@ export default function SuccessfulPayment() {
         <div className={styles.dot}></div>
         <div className={styles.dot}></div>
       </div>
-      <Button onClick={() => navigate("/listStudents")} >Voltar</Button>
+      <Button onClick={() => navigate("/estudantes")} >Voltar</Button>
     </div>
 </div>
   )
