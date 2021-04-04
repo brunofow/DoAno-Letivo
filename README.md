@@ -10,14 +10,14 @@
   <a href="#-contribuidores">Contribuidores</a> 
 </p>
 
-# 🖥️Sobre o projeto
+# 🖥️ Sobre o projeto
 
 <p>📕 DoAno Letivo - é uma forma dos pais que não possuem condições de comprar materiais para seus filhos acharem pessoas dispostas a doar dinheiro ou material.</p>
 
 <p>Projeto desenvolvido durante o ano letivo programação Fcamara 2021.</p>
 <br>
 
-## ⚙️ Funcionalidades
+# ⚙️ Funcionalidades
 
 - Donatários se cadastram na plataforma e podem:
   - [x] Cadastrar seus filhos para receberem doações
@@ -28,7 +28,7 @@
 
 <br>
 
-## 🛠️ Tecnologias utilizadas
+# 🛠️ Tecnologias utilizadas
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
@@ -111,4 +111,3 @@ $ yarn start
 [node]: https://nodejs.org/en/
 [eclipse]: https://www.eclipse.org/downloads/
 [intellij]: https://www.jetbrains.com/pt-br/idea/download/#section=windows
-
