@@ -1,4 +1,4 @@
-<img src="public/Grupo Banner.png">
+<img src="assets/Grupo Banner.png">
 
 <h2 align="center" >
 ⚛️ Olá, este projeto foi dividido em duas partes, <br> este é o nosso front-end, construído com React.js ⚛️
