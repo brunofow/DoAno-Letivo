@@ -23,7 +23,8 @@ export default function FinishPayment(props){
   }, [])
   
   
-  function handlePay(data, { reset }) {
+  function handlePay(qr) {
+    setIsQrCode(qr);
     setIsPaymentModalOpen(true);
   }
     return(
@@ -46,13 +47,12 @@ export default function FinishPayment(props){
                 <span className={styles.line}></span>
             </div>
             </IntlProvider>
-            <Form formRef={formRef} onSubmit={handlePay} className={styles.form} >
-            <Input name="name" type="text" placeholder="Nome completo" autocomplete="off"/>
+            
             <div className={styles.buttonsContainer} >
-                <Button onClick={() => setIsQrCode(true)} type="submit">Pagar por QR Code</Button>
-                <Button onClick={() => setIsQrCode(false)} type="submit">Pagar por chave PIX</Button>
+                <Button onClick={() => handlePay(true)}>Pagar por QR Code</Button>
+                <Button onClick={() => handlePay(false)} >Pagar por chave PIX</Button>
             </div>
-            </Form>
+            
          
             </div>
         </div>

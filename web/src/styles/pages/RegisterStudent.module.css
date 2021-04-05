@@ -67,8 +67,15 @@
   border: 2px solid var(--primary);
 }
 
-.form button {
-  height: 38px;
+.form .notFoundSchool {
+  margin-bottom: 1rem;  
+  margin-left: .2rem;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.form .notFoundSchool a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

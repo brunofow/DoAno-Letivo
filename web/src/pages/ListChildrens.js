@@ -20,7 +20,7 @@ export default function ListChildrens() {
     setIsLoading(true);
     const parent_id = localStorage.getItem("parent_id");
     const secret = localStorage.getItem("secret_key");
-    const response = await api.get(`/students/familia/${parent_id}`, {
+    const response = await api.get(`/students/parent/${parent_id}`, {
       headers: {
         Authorization: secret
       }
