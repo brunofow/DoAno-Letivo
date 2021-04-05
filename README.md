@@ -65,6 +65,18 @@ $ yarn start
 #A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
 
+## 📈 É necessário algumas configurações para o banco de dados funcionar:
+```
+# crie um banco de dados postgres com o nome doano
+spring.datasource.url=jdbc:postgresql://localhost:5432/doano
+
+# coloque seu usuario do banco de dados
+spring.datasource.username=seu_usuario
+
+# coloque a sua senha do banco de dados
+spring.datasource.password=sua_senha 
+```
+
 # ✅ Contribuidores
 
 <table align="center" >
