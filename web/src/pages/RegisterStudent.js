@@ -137,7 +137,7 @@ function RegisterStudent(props) {
               <Select
                 name="school_id"
                 options={schools}
-                className={styles.select}
+                className={styles.select}                
                 placeholder="Nome da escola"
               />
               <Input name="enrollment" placeholder="Número da matrícula" />
