@@ -39,4 +39,4 @@ $ yarn start
 
 [node.js]: https://nodejs.org/
 [yarn]: https://yarnpkg.com/
-[back]: http://github.com/brunofow/DoAno-Letivo/blob/main/server/README.MD
+[back]: http://github.com/brunofow/DoAno-Letivo/blob/main/server/README.md
