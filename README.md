@@ -65,6 +65,8 @@ $ yarn start
 #A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
 
+### O front-end espera um servidor na porta 8080, caso o servidor java, não inicie na porta 8080, basta alterar a porta no arquivo web/src/services/api.js
+
 ## 📈 É necessário algumas configurações para o banco de dados funcionar:
 ```
 # crie um banco de dados postgres com o nome doano
