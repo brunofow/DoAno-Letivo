@@ -31,5 +31,5 @@ $ ./mvnw spring-boot:run
 ## Não se esqueça que para o funcionamento completo é necessário também executar o [frontend][front]
 
 [java]: https://www.java.com/pt-BR/
-[front]: https://github.com/brunofow/DoAno-Letivo/blob/developer/web/README.md
+[front]: https://github.com/brunofow/DoAno-Letivo/blob/main/web/README.md
 
