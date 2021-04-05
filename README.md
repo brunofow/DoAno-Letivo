@@ -12,9 +12,9 @@
 
 # 🖥️ Sobre o projeto
 
-<p>📕 DoAno Letivo - é uma forma dos pais que não possuem condições de comprar materiais para seus filhos acharem pessoas dispostas a doar dinheiro ou material.</p>
+<p>📕 DoAno Letivo - é uma forma dos pais que não possuem condições de comprar materiais para seus filhos, acharem pessoas dispostas a doar dinheiro ou material.</p>
 
-<p>Projeto desenvolvido durante o ano letivo programação Fcamara 2021.</p>
+<p>Projeto desenvolvido durante o Programa de Formação da Fcamara 2021.</p>
 <br>
 
 # ⚙️ Funcionalidades
