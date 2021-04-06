@@ -99,7 +99,7 @@ spring.datasource.password=sua_senha
 <img src="https://img.shields.io/static/v1?label=Linkedin&message=brunofow&color=0A66C2&style=for-the-badge&logo=linkedin"></a></div>
 </td>
 <td align="center">
-<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4E03AQHzQRHDRc6beQ/profile-displayphoto-shrink_800_800/0/1605888709006?e=1623283200&v=beta&t=gaOPKxtaMrtj9Zb8CNTtSMzl87hCEyAvLyrZarxLC-U" width="100px"> <br> <a href="" >Bruna Oliveira<br></a>
+<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4E03AQHzQRHDRc6beQ/profile-displayphoto-shrink_800_800/0/1605888709006?e=1623283200&v=beta&t=gaOPKxtaMrtj9Zb8CNTtSMzl87hCEyAvLyrZarxLC-U" width="100px"> <br> <a href="https://linkedin.com/in/inbruna" >Bruna Oliveira<br></a>
 <div align="center">
 🎉✨😃 <br>
 <a href="https://linkedin.com/in/inbruna" >
@@ -107,7 +107,7 @@ spring.datasource.password=sua_senha
 </div>
 </td>
 <td align="center">
-<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQEDw2kxLg1Qrw/profile-displayphoto-shrink_800_800/0/1616297651735?e=1623283200&v=beta&t=86m1Y7uXLVrnHN4nJaasAVJCzKsInfw3nm058bMpocA" width="100px"> <br> <a href="" >Maria Luisa<br></a>
+<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQEDw2kxLg1Qrw/profile-displayphoto-shrink_800_800/0/1616297651735?e=1623283200&v=beta&t=86m1Y7uXLVrnHN4nJaasAVJCzKsInfw3nm058bMpocA" width="100px"> <br> <a href="https://linkedin.com/in/marialuizabianchi" >Maria Luisa<br></a>
 <div align="center">
 🎉✨😃 <br>
 <a href="https://linkedin.com/in/marialuizabianchi" >
