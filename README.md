@@ -42,7 +42,8 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:[Git][git],[Node.js][node] (para poder rodar os comandos utilizando o npm ou [Yarn][yarn]). Além disto é bom ter um editor para trabalhar com o código como [VSCode][vscode] para o front e para o back [Eclipse][eclipse], [IntelliJ][intellij] ou alguma IDE que rode Java.
-_No registro de estudante, a foto precisa ter no máximo 1BM_
+<br>
+_No registro de estudante, a foto precisa ter no máximo 1MB_
 
 ### 📈 É necessário algumas configurações para o banco de dados funcionar:
 ```
