@@ -43,6 +43,18 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:[Git][git],[Node.js][node] (para poder rodar os comandos utilizando o npm ou [Yarn][yarn]). Além disto é bom ter um editor para trabalhar com o código como [VSCode][vscode] para o front e para o back [Eclipse][eclipse], [IntelliJ][intellij] ou alguma IDE que rode Java.
 
+### 📈 É necessário algumas configurações para o banco de dados funcionar:
+```
+# crie um banco de dados postgres com o nome doano
+spring.datasource.url=jdbc:postgresql://localhost:5432/doano
+
+# coloque seu usuario do banco de dados
+spring.datasource.username=seu_usuario
+
+# coloque a sua senha do banco de dados
+spring.datasource.password=sua_senha 
+```
+
 ### Você precisara executar comandos em duas pastas diferentes
 
 ```bash
@@ -66,18 +78,6 @@ $ yarn start
 ```
 
 ### O front-end espera um servidor na porta 8080, caso o servidor java, não inicie na porta 8080, basta alterar a porta no arquivo web/src/services/api.js
-
-## 📈 É necessário algumas configurações para o banco de dados funcionar:
-```
-# crie um banco de dados postgres com o nome doano
-spring.datasource.url=jdbc:postgresql://localhost:5432/doano
-
-# coloque seu usuario do banco de dados
-spring.datasource.username=seu_usuario
-
-# coloque a sua senha do banco de dados
-spring.datasource.password=sua_senha 
-```
 
 # ✅ Contribuidores
 
